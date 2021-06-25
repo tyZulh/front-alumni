@@ -11,16 +11,16 @@ export default function ContainerBlock() {
   const [userRecherche, setUserRecherche] = useState([]);
   const [prof, setProf] = useState([]);
   const [years, setYears] = useState();
-
+  
   useEffect(() => {
     if (prof.length > 0) {
-      filterTest();
+      filterProf();
     } else if (prof.length === 0) {
       setFilterArray(data);
     }
   }, [prof]);
 
-  const filterTest = () => {
+  const filterProf = () => {
     let result = [];
     prof.forEach((elem) => {
       const tempResult = data.filter((item) => item.profession.includes(elem));
@@ -30,14 +30,9 @@ export default function ContainerBlock() {
   };
 
   const resultat = () => {
-    if (years) {
-      return filterArray
-        .filter((users) => users.prenom.toLowerCase().includes(userRecherche) || users.nom.toLowerCase().includes(userRecherche))
-        .filter((an) => an.annee == years);
-    } else {
-      return filterArray.filter((users) => users.prenom.toLowerCase().includes(userRecherche) || users.nom.toLowerCase().includes(userRecherche));
-    }
+    return filterArray.filter((users) => users.prenom.toLowerCase().includes(userRecherche) || users.nom.toLowerCase().includes(userRecherche));
   };
+  console.log('result', resultat());
 
   return (
     <div id="big-container-block">
@@ -45,6 +40,7 @@ export default function ContainerBlock() {
         <Recherche recupSearchValue={(value) => setUserRecherche(value)} />
         <Profession professionArray={(value) => setProf(value)} />
         <Anneeyears years={(value) => setYears(value)} />
+
         <div id="container-filtre">
           <ListUsers valueUser={resultat()} />
         </div>
