@@ -7,15 +7,34 @@
 }
 
 #small-container-block {
-    padding-top: 40px;
     width:70%;
-    background-color: rgb(194, 166, 166);
     height: auto;
+    background-color: #7E232F;
+    /* display: flex; */
+    justify-content: center;
 }
 
 #container-filtre {
     overflow: auto;
+}
+
+#filter-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+
+#filter-div2 {
+    width:70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
+
+
+
+
  
  

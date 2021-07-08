@@ -7,8 +7,8 @@ export default function Anneeyears(props) {
   };
 
   return (
-    <Space direction="vertical">
-      <DatePicker onChange={onChange} picker="year" />
+    <Space direction="vertical" style={{ width: '40%' }}>
+      <DatePicker style={{ width: '100%' }} onChange={onChange} picker="year" />
     </Space>
   );
 }
