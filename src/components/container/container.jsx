@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Recherche from '../Filters/Recherche/recherche';
 import ListUsers from '../list/listusers';
 
 import Profession from '../Filters/Profession/profession';
-
-
+import Anneeyears from '../Filters/Annee/annee';
 import data from '../data';
 import './container.css';
 
 export default function ContainerBlock() {
   const [userRecherche, setUserRecherche] = useState([]);
+  const [filterArray, setFilterArray] = useState(data);
 
   const [prof, setProf] = useState([]);
+  const [years, setYears] = useState();
 
   useEffect(() => {
     if (prof.length > 0) {
       filterProf();
+      console.log(years);
     } else if (prof.length === 0) {
       setFilterArray(data);
     }
@@ -41,6 +43,7 @@ export default function ContainerBlock() {
         <Recherche recupSearchValue={(value) => setUserRecherche(value)} />
 
         <Profession professionArray={(value) => setProf(value)} />
+        <Anneeyears years={(value) => setYears(value)} />
 
         <div id="container-filtre">
           <ListUsers valueUser={resultat()} />
