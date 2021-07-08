@@ -1,6 +1,6 @@
 import React from 'react';
-import './recherche.css';
 import { Input, Space } from 'antd';
+import './recherche.css';
 
 const { Search } = Input;
 export default function Recherche(props) {

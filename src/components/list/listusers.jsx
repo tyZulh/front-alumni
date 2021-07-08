@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ListUsers(props) {
   const classes = useStyles();
-  console.log(props.valueUser);
 
   return (
     <List className={classes.root}>
