@@ -3,7 +3,6 @@ import Recherche from '../Filters/Recherche/recherche';
 import ListUsers from '../list/listusers';
 
 import Profession from '../Filters/Profession/profession';
-import Anneeyears from '../Filters/Annee/annee';
 import data from '../data';
 import './container.css';
 
@@ -43,7 +42,6 @@ export default function ContainerBlock() {
         <Recherche recupSearchValue={(value) => setUserRecherche(value)} />
 
         <Profession professionArray={(value) => setProf(value)} />
-        <Anneeyears years={(value) => setYears(value)} />
 
         <div id="container-filtre">
           <ListUsers valueUser={resultat()} />
