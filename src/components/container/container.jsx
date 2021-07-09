@@ -19,41 +19,40 @@ export default function ContainerBlock() {
   }, []);
 
   useEffect(() => {
-    if (job.length > 0) {
-      filterJob(data);
-    } else if (job.length === 0) {
-      setFilterArray(data);
-    }
-  }, [job]);
+    filter();
+  }, [school, job]);
 
-  useEffect(() => {
-    if (school.length > 0) {
-      filterSchool(data);
-    } else if (job.length === 0) {
-      setFilterArray(data);
+  const filter = () => {
+    let filteredUsers;
+    if (school.length && !job.length) {
+      filteredUsers = filterSchool(data);
+    } else if (school.length && job.length) {
+      filteredUsers = filterJob(filterSchool(data));
+    } else if (!school.length && job.length) {
+      filteredUsers = filterJob(data);
+    } else {
+      filteredUsers = data;
     }
-  }, [school]);
+    setFilterArray(filteredUsers);
+  };
 
   const filterSchool = (b = filterArray) => {
     let resultSchool = [];
-    if (b) {
-      school.forEach((elem) => {
-        const tempResultSchool = b.filter((item) => item.promo.includes(elem));
-        resultSchool = [...resultSchool, ...tempResultSchool];
-      });
-      return setFilterArray(resultSchool);
-    }
+
+    school.forEach((elem) => {
+      const tempResultSchool = b.filter((item) => item.promo.includes(elem));
+      resultSchool = [...resultSchool, ...tempResultSchool];
+    });
+    return resultSchool;
   };
 
   const filterJob = (b = filterArray) => {
     let result = [];
-    if (b) {
-      job.forEach((elem) => {
-        const tempResult = b.filter((item) => item.profession.includes(elem));
-        result = [...result, ...tempResult];
-      });
-      return setFilterArray(result);
-    }
+    job.forEach((elem) => {
+      const tempResult = b.filter((item) => item.profession.includes(elem));
+      result = [...result, ...tempResult];
+    });
+    return result;
   };
 
   const resultat = () => {

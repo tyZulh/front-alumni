@@ -14,8 +14,6 @@ for (let i = 0; i < professionList.length; i++) {
   });
 }
 
-console.log('salut');
-
 function Proannee(props) {
   const handleChange = (value) => {
     props.professionArray(value);
