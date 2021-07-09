@@ -1,30 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal } from 'antd';
 import { Input } from 'antd';
 
 import { UserOutlined, LinkedinOutlined, PhoneOutlined } from '@ant-design/icons';
 
 function Registertwo(props) {
-  const handleOk = () => {
-    console.log('je suis la');
-    props.close(false);
+  const [phone, setPhone] = useState('');
+  const [linkedin, setLinkedin] = useState('');
+  const [job, setJob] = useState('');
+  const [company, setCompany] = useState('');
+  const [introduce, setIntroduce] = useState('');
+
+  const { TextArea } = Input;
+
+  const infoTwo = {
+    phone,
+    linkedin,
+    job,
+    company,
+    introduce,
   };
 
+  const handleOk = () => {
+    props.close(false);
+    props.info2(infoTwo);
+  };
 
   const handleCancel = () => {
     props.close(false);
   };
-  
 
   return (
     <>
       <Modal title="Inscription" visible={props.openModalTwo} onOk={handleOk} onCancel={handleCancel}>
-        <Input placeholder="Téléphone" prefix={<PhoneOutlined />} />
-        <Input placeholder="Linkedin" prefix={<LinkedinOutlined />} />
-        <Input placeholder="Metier" prefix={<UserOutlined />} />
-        <Input placeholder="Entreprise" prefix={<UserOutlined />} />
+        <Input placeholder="Téléphone" value={phone} onChange={(e) => setPhone(e.target.value)} prefix={<PhoneOutlined />} />
+        <Input placeholder="Linkedin" value={linkedin} onChange={(e) => setLinkedin(e.target.value)} prefix={<LinkedinOutlined />} />
+        <Input placeholder="Metier" value={job} onChange={(e) => setJob(e.target.value)} prefix={<UserOutlined />} />
+        <Input placeholder="Entreprise" value={company} onChange={(e) => setCompany(e.target.value)} prefix={<UserOutlined />} />
 
-        <Input placeholder="Présente-toi" />
+        <TextArea rows={4} placeholder="présente-toi" value={introduce} onChange={(e) => setIntroduce(e.target.value)} />
       </Modal>
     </>
   );

@@ -5,24 +5,21 @@ import { Button } from 'antd';
 import Register from '../modal/Register';
 import Registertwo from '../modal/RegisterTwo';
 import './header.css';
+import { useEffect } from 'react';
 
 export default function header() {
   const [openModal, setOpenModal] = useState(false);
   const [openModalTwo, setOpenModalTwo] = useState(false);
+  const [infoModal1, setInfoModal1] = useState();
+  const [infoModal2, setInfoModal2] = useState();
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [lawSchool, setLawsSchool] = useState('');
-  const [lawCollege, setLawCollege] = useState('');
-  const [profession, setProfession] = useState('');
-  const [phone, SetPhone] = useState('');
-  const [linkedin, setLinkedin] = useState('');
-  const [job, SetJob] = useState('');
-  const [company, SetCompany] = useState('');
-  const [introduce, SetIntroduce] = useState('');
+  const object3 = { ...infoModal1, ...infoModal2 };
+
+  useEffect(() => {
+    if (infoModal1 && infoModal2) {
+      console.log('envoyer au back', object3);
+    }
+  }, [infoModal1, infoModal2]);
 
   return (
     <>
@@ -46,8 +43,22 @@ export default function header() {
           </Col>
         </Row>
       </Container>
-      <Register openModal={openModal} close={(value) => setOpenModal(value)} next={(value) => setOpenModalTwo(value)} />
-      <Registertwo openModalTwo={openModalTwo} openTwo={(value) => setOpenModalTwo(value)} close={(value) => setOpenModalTwo(value)} />
+      <Register
+        info={(value) => {
+          setInfoModal1(value);
+        }}
+        openModal={openModal}
+        close={(value) => setOpenModal(value)}
+        next={(value) => setOpenModalTwo(value)}
+      />
+      <Registertwo
+        openModalTwo={openModalTwo}
+        openTwo={(value) => setOpenModalTwo(value)}
+        close={(value) => setOpenModalTwo(value)}
+        info2={(value) => {
+          setInfoModal2(value);
+        }}
+      />
     </>
   );
 }
