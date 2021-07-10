@@ -1,8 +1,7 @@
 import React from 'react';
-import professionList from './professionList';
+import professionList from '../../data/professionList';
 import { Typography, Select } from 'antd';
 import 'antd/dist/antd.css';
-import './profession.css';
 
 const { Title } = Typography;
 
