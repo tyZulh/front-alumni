@@ -1,8 +1,9 @@
 import React from 'react';
+
 import professionList from './professionList';
 import { Select } from 'antd';
+
 import 'antd/dist/antd.css';
-import './profession.css';
 
 const options = [];
 
