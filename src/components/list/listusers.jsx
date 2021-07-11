@@ -26,25 +26,23 @@ export default function ListUsers(props) {
     <List className={classes.root}>
       {props.valueUser &&
         props.valueUser.map((item, index) => (
-          <>
-            <ListItem alignItems="flex-start" key={index}>
-              <ListItemAvatar>
-                <Avatar alt="image" src={item.photo} />
-              </ListItemAvatar>
-              <ListItemText
-                primary={`${item.prenom} ${item.nom}`}
-                secondary={
-                  <React.Fragment>
-                    <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
-                      {item.profession}
-                    </Typography>
-                    {'   '}
-                    {`${item.promo} ${item.annee}`}
-                  </React.Fragment>
-                }
-              />
-            </ListItem>
-          </>
+          <ListItem alignItems="flex-start" key={index}>
+            <ListItemAvatar>
+              <Avatar alt="image" src={item.photo} />
+            </ListItemAvatar>
+            <ListItemText
+              primary={`${item.prenom} ${item.nom}`}
+              secondary={
+                <React.Fragment>
+                  <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
+                    {item.profession}
+                  </Typography>
+                  {'   '}
+                  {`${item.promo} ${item.annee}`}
+                </React.Fragment>
+              }
+            />
+          </ListItem>
         ))}
       <Divider variant="inset" component="li" />
     </List>

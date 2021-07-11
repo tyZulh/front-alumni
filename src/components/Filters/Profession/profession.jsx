@@ -1,9 +1,9 @@
 import React from 'react';
-import professionList from '../../data/professionList';
-import { Typography, Select } from 'antd';
-import 'antd/dist/antd.css';
 
-const { Title } = Typography;
+import professionList from './professionList';
+import { Select } from 'antd';
+
+import 'antd/dist/antd.css';
 
 const options = [];
 
@@ -15,16 +15,13 @@ for (let i = 0; i < professionList.length; i++) {
   });
 }
 
-console.log('salut');
-
 function Proannee(props) {
   const handleChange = (value) => {
     props.professionArray(value);
   };
   return (
     <div className="pro-annee-container">
-      <Title level={4}>Choisissez votre profession</Title>
-      <Select mode="multiple" style={{ width: '100%' }} placeholder="Please select" options={options} onChange={handleChange} />
+      <Select mode="multiple" style={{ width: '60%' }} placeholder="Sélectionner votre profession" options={options} onChange={handleChange} />
     </div>
   );
 }
