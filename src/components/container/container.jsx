@@ -78,9 +78,9 @@ export default function ContainerBlock() {
             <Anneeyears years={(value) => setYears(value)} />
           </div>
 
-        <div id="container-filtre">
-          <ListUsers valueUser={resultat()} />
-
+          <div id="container-filtre">
+            <ListUsers valueUser={resultat()} />
+          </div>
         </div>
       </div>
     </div>
