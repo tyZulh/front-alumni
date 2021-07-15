@@ -19,3 +19,12 @@
   flex-direction: row;
 
 }
+.confirm{
+  color: red;
+  display: none;
+}
+
+.star-box {
+  display: flex;
+  flex-direction: row;
+}

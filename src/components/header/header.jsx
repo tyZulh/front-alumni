@@ -4,6 +4,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { Button } from 'antd';
 import Register from '../modal/Register';
 import Registertwo from '../modal/RegisterTwo';
+import ModalLogin from '../ModalLogin/ModalLogin';
+
 import './header.css';
 import { useEffect } from 'react';
 
@@ -12,12 +14,13 @@ export default function header() {
   const [openModalTwo, setOpenModalTwo] = useState(false);
   const [infoModal1, setInfoModal1] = useState();
   const [infoModal2, setInfoModal2] = useState();
+  const [openLogin, setOpenLogin] = useState(false);
 
   const object3 = { ...infoModal1, ...infoModal2 };
 
   useEffect(() => {
     if (infoModal1 && infoModal2) {
-      console.log('envoyer au back', object3);
+      return object3;
     }
   }, [infoModal1, infoModal2]);
 
@@ -25,20 +28,28 @@ export default function header() {
     <>
       <Container>
         <Row>
-          <Col xs={12} sm={12} md={9} lg={9} style={{ display: 'flex', alignContent: 'flex-start', alignItems: 'center' }}>
-            <img src={Logo} alt="logo" style={{ width: '20%' }} />
+          <Col xs={12} sm={12} md={9} lg={9} style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'space-around' }}>
+            <img className="logo-header" src={Logo} alt="logo" style={{ width: '10%' }} />
           </Col>
           <Col
             xs={12}
             sm={12}
             md={3}
             lg={3}
-            style={{ display: 'flex', flexDirection: 'column', margin: 'auto', height: 'auto', justifyContent: 'center' }}>
-            <Button type="primary" className="headerBtn" onClick={() => setOpenModal(true)}>
-              Inscription
+            style={{ display: 'flex', flexDirection: 'row', margin: 'auto', height: 'auto', justifyContent: 'center', alignItems: 'center' }}>
+            <Button
+              type="primary"
+              className="headerBtn"
+              style={{ borderRadius: '25px', border: '1px solid #862628', backgroundColor: '#fafafa' }}
+              onClick={() => setOpenModal(true)}>
+              <span className="txt-btn-header">Inscription</span>
             </Button>
-            <Button type="primary" className="headerBtn">
-              Connexion
+            <Button
+              type="primary"
+              className="headerBtn"
+              style={{ borderRadius: '25px', border: '1px solid #862628', backgroundColor: '#fafafa' }}
+              onClick={() => setOpenLogin(true)}>
+              <span className="txt-btn-header">Connexion</span>
             </Button>
           </Col>
         </Row>
@@ -59,6 +70,7 @@ export default function header() {
           setInfoModal2(value);
         }}
       />
+      <ModalLogin openLogin={openLogin} close={(value) => setOpenLogin(value)} />
     </>
   );
 }
