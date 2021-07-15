@@ -18,7 +18,9 @@
    
 }
 
- 
+ #container-filtre {
+     width:100%
+ }
 
 #filter-div {
     display: flex;

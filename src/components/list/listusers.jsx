@@ -31,15 +31,26 @@ export default function ListUsers(props) {
               <Avatar alt="image" src={item.photo} />
             </ListItemAvatar>
             <ListItemText
-              primary={`${item.prenom} ${item.nom}`}
+              primary={`${item.firstname} ${item.lastname}`}
               secondary={
-                <React.Fragment>
-                  <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
-                    {item.profession}
-                  </Typography>
-                  {'   '}
-                  {`${item.promo} ${item.annee}`}
-                </React.Fragment>
+                <>
+                  <React.Fragment>
+                    <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
+                      {item.job}
+                    </Typography>
+                  </React.Fragment>
+                  <React.Fragment>
+                    {item.schools.length === 2 ? (
+                      <Typography>
+                        {`${item.schools[0].title} ${item.schools[0].year_of_promotion}`}
+                        {'  -  '}
+                        {`${item.schools[1].title} ${item.schools[1].year_of_promotion}`}
+                      </Typography>
+                    ) : (
+                      <Typography>{`${item.schools[0].title} ${item.schools[0].year_of_promotion}`} </Typography>
+                    )}
+                  </React.Fragment>
+                </>
               }
             />
           </ListItem>
