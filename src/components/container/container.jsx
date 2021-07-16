@@ -5,19 +5,22 @@ import ListUsers from '../list/listusers';
 import Profession from '../Filters/Profession/profession';
 import School from '../Filters/School/school';
 import Anneeyears from '../Filters/Annee/annee';
-import data from '../data';
 import './container.css';
+import axios from 'axios';
 
 export default function ContainerBlock() {
+  useEffect(async () => {
+    const myData = await axios.get('http://localhost:5006/users/');
+    console.log(myData.data);
+    setdataUsersUsers(myData.data);
+    setFilterArray(myData.data);
+  }, []);
+  const [dataUsers, setdataUsersUsers] = useState([]);
   const [filterArray, setFilterArray] = useState([]);
   const [userRecherche, setUserRecherche] = useState([]);
   const [job, setjob] = useState([]);
   const [years, setYears] = useState();
   const [school, setSchool] = useState([]);
-
-  useEffect(() => {
-    setFilterArray(data);
-  }, []);
 
   useEffect(() => {
     filter();
@@ -26,13 +29,13 @@ export default function ContainerBlock() {
   const filter = () => {
     let filteredUsers;
     if (school.length && !job.length) {
-      filteredUsers = filterSchool(data);
+      filteredUsers = filterSchool(dataUsers);
     } else if (school.length && job.length) {
-      filteredUsers = filterJob(filterSchool(data));
+      filteredUsers = filterJob(filterSchool(dataUsers));
     } else if (!school.length && job.length) {
-      filteredUsers = filterJob(data);
+      filteredUsers = filterJob(dataUsers);
     } else {
-      filteredUsers = data;
+      filteredUsers = dataUsers;
     }
     setFilterArray(filteredUsers);
   };
@@ -50,7 +53,7 @@ export default function ContainerBlock() {
   const filterJob = (b = filterArray) => {
     let result = [];
     job.forEach((elem) => {
-      const tempResult = b.filter((item) => item.profession.includes(elem));
+      const tempResult = b.filter((item) => item.job.includes(elem));
       result = [...result, ...tempResult];
     });
     return result;
@@ -59,10 +62,12 @@ export default function ContainerBlock() {
   const resultat = () => {
     if (years) {
       return filterArray
-        .filter((users) => users.prenom.toLowerCase().includes(userRecherche) || users.nom.toLowerCase().includes(userRecherche))
+        .filter((users) => users.firstname.toLowerCase().includes(userRecherche) || users.lastname.toLowerCase().includes(userRecherche))
         .filter((an) => an.annee == years);
     } else {
-      return filterArray.filter((users) => users.prenom.toLowerCase().includes(userRecherche) || users.nom.toLowerCase().includes(userRecherche));
+      return filterArray.filter(
+        (users) => users.firstname.toLowerCase().includes(userRecherche) || users.lastname.toLowerCase().includes(userRecherche),
+      );
     }
   };
 

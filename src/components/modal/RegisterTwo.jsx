@@ -11,7 +11,7 @@ function Registertwo(props) {
   const [linkedin, setLinkedin] = useState('');
   const [job, setJob] = useState('');
   const [company, setCompany] = useState('');
-  const [introduce, setIntroduce] = useState('');
+  const [bio, setBio] = useState('');
 
   const { TextArea } = Input;
 
@@ -20,7 +20,7 @@ function Registertwo(props) {
     linkedin,
     job,
     company,
-    introduce,
+    bio,
   };
 
   const handleOk = () => {
@@ -41,7 +41,7 @@ function Registertwo(props) {
         <Input placeholder="Metier" value={job} onChange={(e) => setJob(e.target.value)} prefix={<UserOutlined />} />
         <Input placeholder="Entreprise" value={company} onChange={(e) => setCompany(e.target.value)} prefix={<UserOutlined />} />
         <Cv />
-        <TextArea rows={4} placeholder="présente-toi" value={introduce} onChange={(e) => setIntroduce(e.target.value)} />
+        <TextArea rows={4} placeholder="présente-toi" value={bio} onChange={(e) => setBio(e.target.value)} />
       </Modal>
     </>
   );

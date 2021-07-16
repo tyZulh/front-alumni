@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from './img/logoo.png';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Button } from 'antd';
 import Register from '../modal/Register';
 import Registertwo from '../modal/RegisterTwo';
+import axios from 'axios';
 import ModalLogin from '../ModalLogin/ModalLogin';
 
 import './header.css';
-import { useEffect } from 'react';
 
 export default function header() {
   const [openModal, setOpenModal] = useState(false);
@@ -20,9 +20,9 @@ export default function header() {
 
   useEffect(() => {
     if (infoModal1 && infoModal2) {
-      return object3;
+      axios.post('http://localhost:5006/users/', object3);
     }
-  }, [infoModal1, infoModal2]);
+  }, [object3]);
 
   return (
     <>

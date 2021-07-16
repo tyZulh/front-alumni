@@ -12,7 +12,6 @@
     width:70%;
     height: 600px;
     background-color: #7E232F;
-    /* display: flex; */
     justify-content: center;
     overflow: scroll;
     border: 1px solid black;
@@ -24,7 +23,6 @@
     align-items: center;
     justify-content: center;
 }
-
 
  #filter-div {
     display: flex;
