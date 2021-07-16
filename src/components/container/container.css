@@ -6,9 +6,7 @@
     justify-content: center;
     align-items: center;
     border : 1px solid black;
- 
- 
-}
+ }
 
 #small-container-block {
     width:70%;
@@ -41,8 +39,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
- 
-}
+ }
 
  
 

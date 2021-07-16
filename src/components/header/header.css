@@ -3,7 +3,6 @@
    
 }
 
-
 .txt-btn-header {
     color: #862628;
     font-weight: bold;
@@ -24,12 +23,8 @@
     background-color: #fafafa;
     margin:0 0 20px 30px;
     width: 100%;
-
-   
-    
 }
 
 #root {
     background-color: #fafafa; 
-    
 }
