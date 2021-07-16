@@ -16,7 +16,7 @@ export default function School(props) {
     props.schoolArray(value);
   };
   return (
-    <div className="pro-annee-container" style={{ width: '40%' }}>
+    <div className="pro-annee-container" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
       <Select mode="multiple" style={{ width: '100%' }} placeholder="Sélectionner votre école" options={options} onChange={handleChange} />
     </div>
   );

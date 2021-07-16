@@ -70,17 +70,13 @@ export default function ContainerBlock() {
     <div id="big-container-block">
       <div id="small-container-block">
         <Recherche recupSearchValue={(value) => setUserRecherche(value)} />
-
-        <Profession professionArray={(value) => setjob(value)} />
-        <div id="filter-div">
-          <div id="filter-div2">
-            <School schoolArray={(value) => setSchool(value)} />
-            <Anneeyears years={(value) => setYears(value)} />
-          </div>
-
+        <div id="filter-div2">
+          <Profession professionArray={(value) => setjob(value)} />
+          <School schoolArray={(value) => setSchool(value)} />
+          <Anneeyears years={(value) => setYears(value)} />
+        </div>
         <div id="container-filtre">
           <ListUsers valueUser={resultat()} />
-
         </div>
       </div>
     </div>

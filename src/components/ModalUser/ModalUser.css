@@ -1,0 +1,78 @@
+.container-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.name-user {
+    margin-top: 15px;
+    font-size: 24px;
+}
+
+.picture {
+    width:140px;
+    height:140px;
+    border: 1px solid beige;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0 0 0;
+    
+
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    margin: 4px 18px 4px 18px;
+}
+
+
+
+.detail {
+    margin: 6px 20px 0px 20px;
+
+}
+
+.bio {
+    margin: 10px 40px 40px 40px;
+}
+
+.year {
+    font-style: italic;
+}
+
+.school {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.container-user .contact {
+    margin-bottom: 6px;
+    color: black;
+    background-color: gainsboro;
+    border: black 1px solid;
+}
+
+
+
+.contact-title {
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+.phone-box {
+    display: flex;
+    align-items:center;
+    justify-content:flex-end;
+    height: 50px;
+}
+
+.phone {
+    font-weight: bold;
+    margin-right: 100px;
+}
