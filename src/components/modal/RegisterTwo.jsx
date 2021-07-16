@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Avatar from '../UploadAvatar/UploadAvatar';
+import Cv from '../UploadCv/UploadCv';
 import { Modal } from 'antd';
 import { Input } from 'antd';
 
@@ -7,7 +9,7 @@ import { UserOutlined, LinkedinOutlined, PhoneOutlined } from '@ant-design/icons
 function Registertwo(props) {
   const [phone, setPhone] = useState('');
   const [linkedin, setLinkedin] = useState('');
-  const [jobDetail, setJobDetail] = useState('');
+  const [job, setJob] = useState('');
   const [company, setCompany] = useState('');
   const [bio, setBio] = useState('');
 
@@ -16,7 +18,7 @@ function Registertwo(props) {
   const infoTwo = {
     phone,
     linkedin,
-    jobDetail,
+    job,
     company,
     bio,
   };
@@ -33,11 +35,12 @@ function Registertwo(props) {
   return (
     <>
       <Modal title="Inscription" visible={props.openModalTwo} onOk={handleOk} onCancel={handleCancel}>
+        <Avatar />
         <Input placeholder="Téléphone" value={phone} onChange={(e) => setPhone(e.target.value)} prefix={<PhoneOutlined />} />
         <Input placeholder="Linkedin" value={linkedin} onChange={(e) => setLinkedin(e.target.value)} prefix={<LinkedinOutlined />} />
-        <Input placeholder="Metier" value={jobDetail} onChange={(e) => setJobDetail(e.target.value)} prefix={<UserOutlined />} />
+        <Input placeholder="Metier" value={job} onChange={(e) => setJob(e.target.value)} prefix={<UserOutlined />} />
         <Input placeholder="Entreprise" value={company} onChange={(e) => setCompany(e.target.value)} prefix={<UserOutlined />} />
-
+        <Cv />
         <TextArea rows={4} placeholder="présente-toi" value={bio} onChange={(e) => setBio(e.target.value)} />
       </Modal>
     </>

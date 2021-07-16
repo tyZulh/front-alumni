@@ -4,18 +4,25 @@
 
 .ant-select-selector {
   margin: 4px;
-
 }
 
 .ant-picker {
   margin:  4px;
-  
-}
+  }
 
 .dateJob {
   display: flex;
   align-items: center;
   justify-content: left;
   flex-direction: row;
+}
 
+.confirm{
+  color: red;
+  display: none;
+}
+
+.star-box {
+  display: flex;
+  flex-direction: row;
 }

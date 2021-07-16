@@ -45,10 +45,16 @@ function Register(props) {
   };
 
   const handleOk = () => {
-    console.log(info);
-    props.close(false);
-    props.next(true);
-    props.info(info);
+    if (firstname && lastname && email && password && confirmPassword && idSchool1 && job_categorie_id && year1) {
+      props.info(info);
+      props.close(false);
+      props.next(true);
+      let confirmOK = document.querySelector('.confirm');
+      confirmOK.style.display = 'none';
+    } else {
+      let confirm = document.querySelector('.confirm');
+      confirm.style.display = 'block';
+    }
   };
 
   const handleCancel = () => {
@@ -78,26 +84,30 @@ function Register(props) {
   };
   return (
     <>
-      <Modal title="Inscription" visible={props.openModal} onOk={handleOk} onCancel={handleCancel}>
-        <Input value={firstname} onChange={(e) => setFirstName(e.target.value)} placeholder="Prénom" prefix={<UserOutlined />} required="required" />
-        <Input value={lastname} onChange={(e) => setLastName(e.target.value)} placeholder="Nom" prefix={<UserOutlined />} required="required" />
-        <Input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" prefix={<MailOutlined />} required="required" />
-        <Input.Password value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Entrer votre mot de passe " />
+      <Modal title="Inscription" visible={props.openModal} onOk={handleOk} onCancel={handleCancel} okText="Suivant" cancelText="Annuler">
+        <Input value={firstname} onChange={(e) => setFirstName(e.target.value)} placeholder="Prénom *" prefix={<UserOutlined />} />
+
+        <Input value={lastname} onChange={(e) => setLastName(e.target.value)} placeholder="Nom *" prefix={<UserOutlined />} required="required" />
+
+        <Input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email *" prefix={<MailOutlined />} required="required" />
+
+        <Input.Password value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Entrer votre mot de passe * " />
+
         <Input.Password
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Confirmer votre mot de passe"
+          placeholder="Confirmer votre mot de passe *"
           iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
         />
 
         <div className="date-job-box">
           <div className="dateJob">
-            <Select style={{ width: '50%' }} placeholder="Sélectionner votre cursus" onChange={handleChange}>
+            <Select style={{ width: '50%' }} placeholder="Sélectionner votre cursus *" onChange={handleChange}>
               <Option value="1">College de droit</Option>
               <Option value="2">Ecole de droit</Option>
             </Select>
             <Space direction="vertical">
-              <DatePicker style={{ width: '110%' }} placeholder="Année de diplôme" onChange={onChange} picker="year" />
+              <DatePicker style={{ width: '120%' }} placeholder="Année de diplôme *" onChange={onChange} picker="year" />
             </Space>
           </div>
           <div className="dateJob">
@@ -106,7 +116,7 @@ function Register(props) {
               <Option value="2">Ecole de droit</Option>
             </Select>
             <Space direction="vertical">
-              <DatePicker style={{ width: '110%' }} placeholder="Année de diplôme" onChange={onChangeTwo} picker="year" />
+              <DatePicker style={{ width: '120%' }} placeholder="Année de diplôme" onChange={onChangeTwo} picker="year" />
             </Space>
           </div>
           <Select style={{ width: '100%' }} defaultValue="Profession actuelle" onChange={prof}>
@@ -119,6 +129,9 @@ function Register(props) {
                 );
               })}
           </Select>
+        </div>
+        <div>
+          <p className="confirm"> Veuillez remplir tous les champs *</p>
         </div>
       </Modal>
     </>

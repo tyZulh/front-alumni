@@ -1,3 +1,30 @@
 .headerBtn{
-    margin:2%
+    margin:2%;
+   
+}
+
+.txt-btn-header {
+    color: #862628;
+    font-weight: bold;
+}
+
+.row {
+    background-color: #fafafa;
+    width: 100vw;
+    margin-bottom: 15px;
+
+}
+
+.container .row {
+    align-items: center;
+}
+
+#root .container {
+    background-color: #fafafa;
+    margin:0 0 20px 30px;
+    width: 100%;
+}
+
+#root {
+    background-color: #fafafa; 
 }
