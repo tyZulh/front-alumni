@@ -26,3 +26,22 @@
   display: flex;
   flex-direction: row;
 }
+
+.ant-modal-footer .ant-btn-primary {
+  background-Color:#862628 ;
+  color:#fafafa;
+  border: 1px solid gray;
+}
+
+.ant-modal-footer .ant-btn-primary:hover {
+  background-Color:#bb5254 ;
+  color:#fafafa;
+  border: 1px solid gray;
+  
+  
+}
+
+.ant-modal-footer .ant-btn:hover {
+  border : 1px solid gray;
+  
+}

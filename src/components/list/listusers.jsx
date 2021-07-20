@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
+
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
@@ -30,10 +30,10 @@ export default function ListUsers(props) {
   };
   return (
     <>
-      <List className={classes.root} onClick={setShowModale}>
+      <List compopent="nav" className={classes.root} onClick={setShowModale} aria-label="mailbox folders">
         {props.valueUser &&
           props.valueUser.map((item, index) => (
-            <ListItem alignItems="flex-start" key={index}>
+            <ListItem button divider alignItems="flex-start" key={index}>
               <ListItemAvatar>
                 <Avatar alt="image" src={item.photo} />
               </ListItemAvatar>
@@ -62,7 +62,6 @@ export default function ListUsers(props) {
               />
             </ListItem>
           ))}
-        <Divider variant="inset" component="li" />
       </List>
 
       <ModalUser modal={showModal} cancelModal={(value) => setShowModal(value)} />
