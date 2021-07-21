@@ -19,10 +19,10 @@ function Proannee(props) {
     props.professionArray(value);
   };
   return (
-    <div style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
+    <div style={{ width: '80%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       {jobData && (
         <Select
-          style={{ width: '100%', margin: 'auto' }}
+          style={{ width: '80%', margin: 'auto' }}
           mode="multiple"
           placeholder="Sélectionner votre profession"
           options={jobData}

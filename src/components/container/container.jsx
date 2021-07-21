@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Recherche from '../Filters/Recherche/recherche';
 import ListUsers from '../list/listusers';
-
 import Profession from '../Filters/Profession/profession';
 import School from '../Filters/School/school';
 import Anneeyears from '../Filters/Annee/annee';
-import './container.css';
 import axios from 'axios';
+
+import './container.css';
 
 export default function ContainerBlock() {
   useEffect(async () => {
@@ -82,8 +82,9 @@ export default function ContainerBlock() {
           <School schoolArray={(value) => setSchool(value)} />
           <Anneeyears years={(value) => setYears(value)} />
         </div>
-        <div id="container-filtre"></div>
-        <ListUsers valueUser={resultat()} />
+        <div id="container-filtre">
+          <ListUsers valueUser={resultat()} />
+        </div>
       </div>
     </div>
   );

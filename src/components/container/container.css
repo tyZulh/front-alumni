@@ -5,16 +5,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border : 1px solid black;
+    margin-bottom: 200px;
  }
 
 #small-container-block {
     width:70%;
-    height: 600px;
+    height: 640px;
     background-color: #7E232F;
     justify-content: center;
-    overflow: scroll;
-    border: 1px solid black;
+    position: absolute;
+    margin-top: 520px;
+    padding-top: 2%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    border-radius: 0.5%;
 }
 
 #filter-search {
@@ -37,11 +40,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 15px auto 15px auto;
+    width: 100%;
  }
 
- 
+#container-filtre{
+margin: 0 10px 0 10px;
+height: 500px;
+overflow-y:scroll;
 
 
 
- 
- 
+}
+

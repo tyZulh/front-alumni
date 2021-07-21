@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Cv from '../UploadCv/UploadCv';
-import { Input, Checkbox, Modal, Button } from 'antd';
+import { Input, Checkbox, Modal } from 'antd';
 
 import { UserOutlined, LinkedinOutlined, PhoneOutlined } from '@ant-design/icons';
 
