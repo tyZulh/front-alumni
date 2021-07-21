@@ -11,7 +11,7 @@ import axios from 'axios';
 export default function ContainerBlock() {
   useEffect(async () => {
     const myData = await axios.get('http://localhost:5006/users/');
-    console.log(myData.data[0]);
+    console.log(myData.data);
     setdataUsersUsers(myData.data);
     setFilterArray(myData.data);
   }, []);
@@ -63,7 +63,6 @@ export default function ContainerBlock() {
   };
 
   const resultat = () => {
-    console.log('years', years);
     if (years) {
       return filterArray
         .filter((users) => users.firstname.toLowerCase().includes(userRecherche) || users.lastname.toLowerCase().includes(userRecherche))
@@ -84,9 +83,8 @@ export default function ContainerBlock() {
           <School schoolArray={(value) => setSchool(value)} />
           <Anneeyears years={(value) => setYears(value)} />
         </div>
-        <div id="container-filtre">
-          <ListUsers valueUser={resultat()} />
-        </div>
+        <div id="container-filtre"></div>
+        <ListUsers valueUser={resultat()} />
       </div>
     </div>
   );

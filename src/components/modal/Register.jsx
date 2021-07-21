@@ -11,13 +11,13 @@ import './Register.css';
 
 function Register(props) {
   const [jobList, setJobList] = useState([]);
-  const [firstname, setFirstName] = useState('');
+  const [firstname, setFirstName] = useState('ok');
   const [admin, setAdmin] = useState(0);
   const [validate, setValidate] = useState(1);
-  const [lastname, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [lastname, setLastName] = useState('ok');
+  const [email, setEmail] = useState('ok');
+  const [password, setPassword] = useState('ok');
+  const [confirmPassword, setConfirmPassword] = useState('ok');
   const [idSchool1, setIdSchool1] = useState('');
   const [idSchool2, setIdSchool2] = useState('');
   const [job_categorie_id, setJobCategorieId] = useState('');
@@ -82,6 +82,7 @@ function Register(props) {
   const prof = (value) => {
     setJobCategorieId(value);
   };
+
   return (
     <>
       <Modal title="Inscription" visible={props.openModal} onOk={handleOk} onCancel={handleCancel} okText="Suivant" cancelText="Annuler">

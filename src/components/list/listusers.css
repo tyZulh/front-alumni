@@ -5,5 +5,11 @@
     height: 100%;
 }
 
-
- 
+.school-tag {
+    background-color: #7b1420d4;
+    color: white;
+    border-radius: 15px;
+    padding: 4px 7px;
+    margin-left: 10px !important;
+    font-size: 14px !important;
+}
