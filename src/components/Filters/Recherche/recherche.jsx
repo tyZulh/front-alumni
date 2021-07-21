@@ -6,8 +6,8 @@ const { Search } = Input;
 export default function Recherche(props) {
   const [value, setValue] = React.useState('');
   return (
-    <div id="container-search">
-      <Space style={{ width: '60%' }} direction="vertical">
+    <div className="box-search">
+      <Space style={{ width: '60%', margin: 'auto' }} direction="vertical">
         <Search
           placeholder="Rechercher..."
           allowClear

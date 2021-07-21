@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Logo from './img/logoo.png';
-import { Container, Row, Col } from 'react-bootstrap';
-import { Button } from 'antd';
+import profil from './img/profil.png';
 import Register from '../modal/Register';
 import Registertwo from '../modal/RegisterTwo';
 import axios from 'axios';
 import ModalLogin from '../ModalLogin/ModalLogin';
-
+import Modification from '../modalModification/Modification';
+import ModificationTwo from '../modalModification/ModificationTwo';
 import './header.css';
 
 export default function header() {
   const [openModal, setOpenModal] = useState(false);
   const [openModalTwo, setOpenModalTwo] = useState(false);
+  const [openModalModif, setOpenModalModif] = useState(false);
+  const [openModalModifTwo, setOpenModalModifTwo] = useState(false);
   const [infoModal1, setInfoModal1] = useState();
   const [infoModal2, setInfoModal2] = useState();
   const [openLogin, setOpenLogin] = useState(false);
@@ -26,34 +28,29 @@ export default function header() {
 
   return (
     <>
-      <Container>
-        <Row>
-          <Col xs={12} sm={12} md={9} lg={9} style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'space-around' }}>
-            <img className="logo-header" src={Logo} alt="logo" style={{ width: '10%' }} />
-          </Col>
-          <Col
-            xs={12}
-            sm={12}
-            md={3}
-            lg={3}
-            style={{ display: 'flex', flexDirection: 'row', margin: 'auto', height: 'auto', justifyContent: 'center', alignItems: 'center' }}>
-            <Button
-              type="primary"
-              className="headerBtn"
-              style={{ borderRadius: '25px', border: '1px solid #862628', backgroundColor: '#fafafa' }}
-              onClick={() => setOpenModal(true)}>
-              <span className="txt-btn-header">Inscription</span>
-            </Button>
-            <Button
-              type="primary"
-              className="headerBtn"
-              style={{ borderRadius: '25px', border: '1px solid #862628', backgroundColor: '#fafafa' }}
-              onClick={() => setOpenLogin(true)}>
-              <span className="txt-btn-header">Connexion</span>
-            </Button>
-          </Col>
-        </Row>
-      </Container>
+      <div className="header">
+        <div className="logo-box">
+          <img className="logo-header" src={Logo} alt="logo" />
+        </div>
+        <div className="connection-zone">
+          <div className="profil-box">
+            <div className="profil-connected" role="button" tabIndex={0} onClick={() => setOpenModalModif(true)}>
+              <img className="profil-picture" src={profil} alt="David-Chazoule" />
+              <p className="profil-name">David Chazoule</p>
+            </div>
+            <button className="disconnection">Déconnection</button>
+          </div>
+
+          <div className="button-box">
+            <button className="headerBtn" onClick={() => setOpenModal(true)}>
+              Inscription
+            </button>
+            <button className="headerBtn" onClick={() => setOpenLogin(true)}>
+              Connexion
+            </button>
+          </div>
+        </div>
+      </div>
       <Register
         info={(value) => {
           setInfoModal1(value);
@@ -71,6 +68,24 @@ export default function header() {
         }}
       />
       <ModalLogin openLogin={openLogin} close={(value) => setOpenLogin(value)} />
+
+      <Modification
+        info={(value) => {
+          setInfoModal1(value);
+        }}
+        openModal={openModalModif}
+        close={(value) => setOpenModalModif(value)}
+        next={(value) => setOpenModalModifTwo(value)}
+      />
+
+      <ModificationTwo
+        openModalTwo={openModalModifTwo}
+        openModal={(value) => setOpenModalModifTwo(value)}
+        close={(value) => setOpenModalModifTwo(value)}
+        info2={(value) => {
+          setInfoModal2(value);
+        }}
+      />
     </>
   );
 }

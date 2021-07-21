@@ -7,9 +7,7 @@ import { DatePicker, Space } from 'antd';
 
 import axios from 'axios';
 
-import './Register.css';
-
-function Register(props) {
+function Modification(props) {
   const [jobList, setJobList] = useState([]);
   const [firstname, setFirstName] = useState('');
   const [admin, setAdmin] = useState(0);
@@ -45,7 +43,7 @@ function Register(props) {
   };
 
   const handleOk = () => {
-    if (firstname && lastname && email && password && confirmPassword && idSchool1 && job_categorie_id && year1 && password === confirmPassword) {
+    if (firstname && lastname && email && password && confirmPassword && idSchool1 && job_categorie_id && year1) {
       props.info(info);
       props.close(false);
       props.next(true);
@@ -84,7 +82,7 @@ function Register(props) {
   };
   return (
     <>
-      <Modal title="Inscription" visible={props.openModal} onOk={handleOk} onCancel={handleCancel} okText="Suivant" cancelText="Annuler">
+      <Modal title="Modifier" visible={props.openModal} onOk={handleOk} onCancel={handleCancel} okText="Suivant" cancelText="Annuler">
         <Input value={firstname} onChange={(e) => setFirstName(e.target.value)} placeholder="Prénom *" prefix={<UserOutlined />} />
 
         <Input value={lastname} onChange={(e) => setLastName(e.target.value)} placeholder="Nom *" prefix={<UserOutlined />} required="required" />
@@ -114,7 +112,6 @@ function Register(props) {
             <Select style={{ width: '50%' }} placeholder="Sélectionner votre cursus" onChange={handleChangeTwo}>
               <Option value="1">College de droit</Option>
               <Option value="2">Ecole de droit</Option>
-              <Option value=""></Option>
             </Select>
             <Space direction="vertical">
               <DatePicker style={{ width: '120%' }} placeholder="Année de diplôme" onChange={onChangeTwo} picker="year" />
@@ -139,4 +136,4 @@ function Register(props) {
   );
 }
 
-export default Register;
+export default Modification;

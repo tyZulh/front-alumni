@@ -1,8 +1,27 @@
-#container-search{
+.ant-input-group-addon  {
+    background-color: #7e232f !important;
+    height: 30px;
+}
+.ant-input-group-addon .ant-btn {
+    background-color: #fafafa ;
+    border : 1px solid  black ;
+    height: 34px;
+    color: #7e232f;
+    width: 50px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ant-input-group-addon .ant-btn:hover {
+    background-color: #7e232f ;
+    border : 1px solid  black ;
+    color: white;
+}
+
+.box-search{
+    width: 100%;
+    height: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
 }
 
