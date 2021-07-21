@@ -19,7 +19,6 @@ function Users() {
       history.push('/');
     }
   }, []);
-  console.log(users);
   return (
     <div>
       <Header />

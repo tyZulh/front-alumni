@@ -11,7 +11,6 @@ import axios from 'axios';
 export default function ContainerBlock() {
   useEffect(async () => {
     const myData = await axios.get('http://localhost:5006/users/');
-    console.log(myData.data);
     setdataUsersUsers(myData.data);
     setFilterArray(myData.data);
   }, []);

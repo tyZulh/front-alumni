@@ -13,8 +13,7 @@ function Register() {
 
   const handlePost = async (e) => {
     e.preventDefault();
-    const result = await axios.post('http://localhost:5006/users', { email, password, firstname, lastname, job, phone });
-    console.log(result);
+    await axios.post('http://localhost:5006/users', { email, password, firstname, lastname, job, phone });
   };
   return (
     <div className="Login h-64 bg-gray-300 p-10 flex flex-col">

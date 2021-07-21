@@ -91,11 +91,6 @@ function Registertwo(props) {
         <form ref={refCv}>
           <div style={{ display: 'flex', backgroundColor: 'white' }}>
             <input type="file" name="cv" encType="multipart/form-data" onChange={changeHandler} style={{ backgroundColor: 'white' }} />
-            {/* {isSelected && (
-              <Button type="primary" size="small" shape="circle">
-                X
-              </Button>
-            )} */}
           </div>
         </form>
         <TextArea rows={4} placeholder="présente-toi" value={bio} onChange={(e) => setBio(e.target.value)} />
