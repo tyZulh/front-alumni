@@ -38,8 +38,6 @@ export default function ListUsers(props) {
       <List compopent="nav" className={classes.root} aria-label="mailbox folders">
         {props.valueUser &&
           props.valueUser.map((item, index) => {
-            console.log();
-
             return (
               <ListItem button divider alignItems="flex-start" key={index} onClick={() => showModale(item.student_id)}>
                 <ListItemAvatar>
