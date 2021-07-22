@@ -27,6 +27,34 @@
   flex-direction: row;
 }
 
+#input-image {
+height:60px;
+width:60px;
+}
+
+#lab-picture {
+  width: 100px;
+  height: 100px;
+  background-repeat:none;
+  display: flex;
+  justify-content: center;
+  align-content:center;
+  background-size: 100%;
+  cursor: pointer;
+  border: grey dotted 1px;
+}
+
+#lab-picture:hover {
+  border: rgb(0, 166, 255) dotted 2px;
+}
+
+#picture-span {
+  margin: auto auto;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 300;
+}
+
 .ant-modal-footer .ant-btn-primary {
   background-Color:#862628 ;
   color:#fafafa;
