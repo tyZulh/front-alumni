@@ -6,6 +6,8 @@ import './ModalLogin.css';
 
 function ModalLogin(props) {
   const [valueLogin, setValueLogin] = useState(null);
+  // const [isModalVisible, setIsModalVisible] = useState(false);
+
   useEffect(() => {
     if (valueLogin !== null) {
       console.log('Tkt Thomas on garde juste ce console.log');
@@ -14,6 +16,8 @@ function ModalLogin(props) {
 
   const handleOk = () => {
     props.close(false);
+    // setIsModalVisible(false);
+    console.log('ok');
   };
 
   const handleCancel = () => {
