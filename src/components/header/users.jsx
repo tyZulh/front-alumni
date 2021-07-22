@@ -17,7 +17,6 @@ export default function Users() {
       history.push('/');
     }
   }, []);
-  console.log(users);
   return (
     <div>
       <h1>hello user</h1>
