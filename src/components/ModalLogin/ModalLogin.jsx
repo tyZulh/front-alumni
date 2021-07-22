@@ -1,14 +1,29 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Modal } from 'antd';
 import Login from '../Login/login';
-
+import axios from 'axios';
 import './ModalLogin.css';
 
 function ModalLogin(props) {
   const [valueLogin, setValueLogin] = useState(null);
+  const history = useHistory();
   useEffect(() => {
     if (valueLogin !== null) {
-      console.log('jesuis la', valueLogin);
+      const handlePost = async () => {
+        try {
+          console.log('helo');
+          const result = await axios.post('http://localhost:5006/users/signIn', valueLogin);
+          console.log(valueLogin);
+          console.log('result', result);
+          localStorage.setItem('token', result.headers.accesstoken);
+          localStorage.setItem('email', valueLogin.Email);
+          console.log(result);
+        } catch (err) {
+          history.push('/');
+        }
+      };
+      handlePost();
     }
   }, [valueLogin]);
 
