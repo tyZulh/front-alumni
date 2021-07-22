@@ -1,21 +1,16 @@
-import React, { useEffect, useState, useHistory } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function Users() {
   const [users, setUsers] = useState([]);
-  const history = useHistory();
   const item = localStorage.getItem('email');
   useEffect(async () => {
-    try {
-      const result = await axios.get('http://localhost:5006/users/' + item, {
-        headers: {
-          Authorization: 'bearer ' + localStorage.getItem('token'),
-        },
-      });
-      setUsers(result.data);
-    } catch (err) {
-      history.push('/');
-    }
+    const result = await axios.get('http://localhost:5006/users/' + item, {
+      headers: {
+        Authorization: 'bearer ' + localStorage.getItem('token'),
+      },
+    });
+    setUsers(result.data);
   }, []);
   return (
     <div>
