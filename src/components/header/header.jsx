@@ -23,7 +23,6 @@ export default function header() {
   const object3 = { ...infoModal1, ...infoModal2 };
 
   const [users, setUsers] = useState([]);
-  const history = useHistory();
   const item = localStorage.getItem('email');
 
   function ClearLocal() {
@@ -32,17 +31,13 @@ export default function header() {
   }
 
   useEffect(async () => {
-    try {
-      const result = await axios.get('http://localhost:5006/users/' + item, {
-        headers: {
-          Authorization: 'bearer ' + localStorage.getItem('token'),
-        },
-      });
-      setUsers(result.data);
-      return result;
-    } catch (err) {
-      history.push('/');
-    }
+    const result = await axios.get('http://localhost:5006/users/' + item, {
+      headers: {
+        Authorization: 'bearer ' + localStorage.getItem('token'),
+      },
+    });
+    setUsers(result.data);
+    return result;
   }, []);
 
   useEffect(() => {
