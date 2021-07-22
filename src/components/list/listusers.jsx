@@ -30,7 +30,6 @@ export default function ListUsers(props) {
   const showModale = async (id) => {
     const user = await axios.get(`http://localhost:5006/users/id/${id}`);
     setUserId(user.data[0]);
-    console.log(user.data[0]);
     setShowModal(true);
   };
   return (
