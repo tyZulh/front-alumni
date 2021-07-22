@@ -17,6 +17,8 @@ export default function header() {
   const [infoModal1, setInfoModal1] = useState();
   const [infoModal2, setInfoModal2] = useState();
   const [openLogin, setOpenLogin] = useState(false);
+  const [picture, setPicture] = useState();
+  const [cv, setCv] = useState();
 
   const object3 = { ...infoModal1, ...infoModal2 };
 
@@ -45,9 +47,30 @@ export default function header() {
 
   useEffect(() => {
     if (infoModal1 && infoModal2) {
-      axios.post('http://localhost:5006/users/', object3);
+      const postData = async () => {
+        const user = await axios.post('http://localhost:5006/users/', object3);
+        if (picture.get('picture')) {
+          const options = {
+            method: 'POST',
+            url: `http://localhost:5006/users/${user.data.id}/picture`,
+            data: picture,
+            headers: { 'Content-Type': 'multipart/form-data' },
+          };
+          await axios(options);
+        }
+        if (cv.get('cv')) {
+          const optionsCv = {
+            method: 'POST',
+            url: `http://localhost:5006/users/${user.data.id}/cv`,
+            data: cv,
+            headers: { 'Content-Type': 'multipart/form-data' },
+          };
+          await axios(optionsCv);
+        }
+      };
+      postData();
     }
-  }, [object3]);
+  }, [infoModal2, infoModal1]);
 
   return (
     <>
@@ -93,6 +116,8 @@ export default function header() {
         openModalTwo={openModalTwo}
         openTwo={(value) => setOpenModalTwo(value)}
         close={(value) => setOpenModalTwo(value)}
+        picture={(value) => setPicture(value)}
+        cv={(value) => setCv(value)}
         info2={(value) => {
           setInfoModal2(value);
         }}

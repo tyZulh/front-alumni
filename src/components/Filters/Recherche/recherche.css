@@ -10,7 +10,6 @@
     width: 50px;
     font-size: 16px;
     font-weight: bold;
-    
 }
 
 .ant-input-group-addon .ant-btn:hover {
@@ -18,7 +17,6 @@
     border : 1px solid  black ;
     color: white;
 }
-
 
 .box-search{
     width: 100%;

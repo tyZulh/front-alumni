@@ -35,7 +35,7 @@ export default function ListUsers(props) {
           props.valueUser.map((item, index) => (
             <ListItem button divider alignItems="flex-start" key={index}>
               <ListItemAvatar>
-                <Avatar alt="image" src={item.photo} />
+                <Avatar alt="image" src={item.picture ? `data:image/jpeg;base64, ${item.picture}` : null} />
               </ListItemAvatar>
               <ListItemText
                 primary={`${item.firstname} ${item.lastname}`}
@@ -48,13 +48,18 @@ export default function ListUsers(props) {
                     </React.Fragment>
                     <React.Fragment>
                       {item.schools.length === 2 ? (
-                        <Typography>
-                          {`${item.schools[0].title} ${item.schools[0].year_of_promotion}`}
-                          {'  -  '}
-                          {`${item.schools[1].title} ${item.schools[1].year_of_promotion}`}
-                        </Typography>
+                        <>
+                          <Typography component="span" className="school-tag">
+                            {`${item.schools[0].title} ${item.schools[0].year_of_promotion}`}
+                          </Typography>
+                          <Typography component="span" className="school-tag">
+                            {`${item.schools[1].title} ${item.schools[1].year_of_promotion}`}
+                          </Typography>
+                        </>
                       ) : (
-                        <Typography>{`${item.schools[0].title} ${item.schools[0].year_of_promotion}`} </Typography>
+                        <Typography className="school-tag" component="span">
+                          {`${item.schools[0].title} ${item.schools[0].year_of_promotion}`}{' '}
+                        </Typography>
                       )}
                     </React.Fragment>
                   </>
