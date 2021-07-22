@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Logo from './img/logoo.png';
-import profil from './img/profil.png';
 import Register from '../modal/Register';
 import Registertwo from '../modal/RegisterTwo';
 import axios from 'axios';
@@ -21,13 +21,30 @@ export default function header() {
   const [cv, setCv] = useState();
 
   const object3 = { ...infoModal1, ...infoModal2 };
+
+  const [users, setUsers] = useState([]);
+  const item = localStorage.getItem('email');
+
+  function ClearLocal() {
+    window.localStorage.clear();
+    document.location.reload();
+  }
+
+  useEffect(async () => {
+    const result = await axios.get('http://localhost:5006/users/' + item, {
+      headers: {
+        Authorization: 'bearer ' + localStorage.getItem('token'),
+      },
+    });
+    setUsers(result.data);
+    return result;
+  }, []);
+
   useEffect(() => {
     if (infoModal1 && infoModal2) {
       const postData = async () => {
         const user = await axios.post('http://localhost:5006/users/', object3);
-        console.log(picture.get('picture'));
         if (picture.get('picture')) {
-          console.log('salut toi');
           const options = {
             method: 'POST',
             url: `http://localhost:5006/users/${user.data.id}/picture`,
@@ -58,13 +75,20 @@ export default function header() {
         </div>
         <div className="connection-zone">
           <div className="profil-box">
-            <div className="profil-connected" role="button" tabIndex={0} onClick={() => setOpenModalModif(true)}>
-              <img className="profil-picture" src={profil} alt="David-Chazoule" />
-              <p className="profil-name">David Chazoule</p>
-            </div>
-            <button className="disconnection">Déconnection</button>
+            {users.map((user) => {
+              return (
+                <>
+                  <div div key={user.email} className="profil-connected" role="button" tabIndex={0} onClick={() => setOpenModalModif(true)}>
+                    <div className="profil-picture">{user.picture}</div>
+                    <div className="profil-name">{user.firstname}</div>
+                  </div>
+                </>
+              );
+            })}
+            <button className="disconnection" onClick={ClearLocal}>
+              Déconnexion
+            </button>
           </div>
-
           <div className="button-box">
             <button className="headerBtn" onClick={() => setOpenModal(true)}>
               Inscription
