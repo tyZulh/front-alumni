@@ -12,13 +12,11 @@ function ModalLogin(props) {
     if (valueLogin !== null) {
       const handlePost = async () => {
         try {
-          console.log('helo');
           const result = await axios.post('http://localhost:5006/users/signIn', valueLogin);
-          console.log(valueLogin);
-          console.log('result', result);
           localStorage.setItem('token', result.headers.accesstoken);
           localStorage.setItem('email', valueLogin.Email);
-          console.log(result);
+          handleCancel();
+          document.location.reload();
         } catch (err) {
           history.push('/');
         }

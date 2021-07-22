@@ -29,10 +29,6 @@ export default function header() {
     document.location.reload();
   }
 
-  function Refresh() {
-    document.location.reload();
-  }
-
   useEffect(async () => {
     try {
       const result = await axios.get('http://localhost:5006/users/' + item, {
@@ -46,7 +42,6 @@ export default function header() {
       history.push('/');
     }
   }, []);
-  console.log(users);
 
   useEffect(() => {
     if (infoModal1 && infoModal2) {
@@ -63,7 +58,6 @@ export default function header() {
         <div className="connection-zone">
           <div className="profil-box">
             {users.map((user) => {
-              console.log(users);
               return (
                 <>
                   <div div key={user.email} className="profil-connected" role="button" tabIndex={0} onClick={() => setOpenModalModif(true)}>
