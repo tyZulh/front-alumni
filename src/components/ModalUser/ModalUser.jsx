@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Modal } from 'antd';
-import user from '../users';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
 import './ModalUser.css';
-import mail from '../img/mail.png';
+import email from '../img/mail.png';
 import linkedin from '../img/linkedin.png';
 import phone from '../img/phone.png';
 
@@ -21,7 +22,6 @@ function ModalUser(props) {
   const handleCancel = () => {
     props.cancelModal(false);
   };
-
   return (
     <>
       <Modal
@@ -29,50 +29,65 @@ function ModalUser(props) {
         onCancel={handleCancel}
         okButtonProps={{ style: { display: 'none' } }}
         cancelButtonProps={{ style: { display: 'none' } }}>
-        <div className="container-user">
-          <img className="picture" src={user.photo} alt={user.prenom} />
-          <h1 className="name-user">
-            {user.prenom} <span className="name">{user.nom}</span>
-          </h1>
-          <div className="line"></div>
-          <p className="profession">{user.profession}</p>
-          <p className="detail-job">{user.metier}</p>
-          <p className="detail-job">{user.entreprise}</p>
-          <p className="detail">
-            <span className="school"> {user.etude1}</span> - <span className="year">{user.annee1}</span>
-          </p>
-          <p className="detail">
-            <span className="school"> {user.etude2}</span> - <span className="year">{user.annee2}</span>
-          </p>
-          <p className="detail-job">{user.master}</p>
-          <p className="bio">{user.bio}</p>
-          <button className="contact" type="primary" shape="round" size="medium">
-            Consulter CV
-          </button>
-          <div className="line"></div>
-          <h3 className="contact-title">CONTACT</h3>
-        </div>
-        <div className="contact-container">
-          <a href={user.linkedin}>
-            <img className="logo" src={linkedin} alt="Linkedin" />
-          </a>
-          <div className="mail-box">
-            <img className="logo" src={mail} alt="mail" onClick={handleEmail} />
-            {showEmail && (
-              <>
-                <p className="email">{user.email}</p>
-              </>
-            )}
-          </div>
-          <div className="mail-box">
-            <img className="logo" src={phone} alt="téléphone" onClick={handlePhone} />
-            {showPhone && (
-              <>
-                <p className="phone">{user.telephone}</p>
-              </>
-            )}
-          </div>
-        </div>
+        {props.userId && (
+          <>
+            <div className="container-user">
+              <ListItemAvatar>
+                <Avatar alt="image" src={props.userId.picture ? `data:image/jpeg;base64, ${props.userId.picture}` : null} />
+              </ListItemAvatar>
+              <h1 className="name-user">
+                {props.userId.firstname} {props.userId.lastname}
+              </h1>
+              <div className="line"></div>
+              <p className="profession">{props.userId.job}</p>
+              <p className="detail-job">{props.userId.jobDetail}</p>
+              <p className="detail-job">{props.userId.company}</p>
+              <p>{props.userId.master_degree}</p>
+
+              <p className="detail">
+                <span className="school"> {props.userId.schools[0].title}</span> -{' '}
+                <span className="year">{props.userId.schools[0].year_of_promotion}</span>
+              </p>
+              {props.userId.schools.length > 1 ? (
+                <>
+                  <p className="detail">
+                    <span className="school"> {props.userId.schools[1].title}</span> -{' '}
+                    <span className="year">{props.userId.schools[1].year_of_promotion}</span>
+                  </p>
+                </>
+              ) : null}
+              <p className="bio">{props.userId.bio}</p>
+
+              <a href={`data:application/pdf;base64, ${props.userId.cv}`} download={`CV-${props.userId.firstname}-${props.userId.lastname}`}>
+                <button>Télécharger mon CV</button>
+              </a>
+              <div className="line"></div>
+              <h3 className="contact-title">CONTACT</h3>
+            </div>
+            <div className="contact-container">
+              <a href={props.userId.linkedin}>
+                <img className="logo" src={linkedin} alt="Linkedin" />
+              </a>
+              <div className="mail-box">
+                <img className="logo" src={email} alt="mail" onClick={handleEmail} />
+                {showEmail && (
+                  <>
+                    <p className="email">{props.userId.email}</p>
+                  </>
+                )}
+              </div>
+              <div className="mail-box">
+                <img className="logo" src={phone} alt="téléphone" onClick={handlePhone} />
+
+                {showPhone && (
+                  <>
+                    <p className="phone">{props.userId.phone}</p>
+                  </>
+                )}
+              </div>
+            </div>
+          </>
+        )}
       </Modal>
     </>
   );

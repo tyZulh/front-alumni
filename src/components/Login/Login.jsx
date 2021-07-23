@@ -1,27 +1,35 @@
-import React from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
+import React, { useState } from 'react';
+import { Form, Input, Button } from 'antd';
 
 export default function Login(props) {
-  const onFinish = (values) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handlePost = (values) => {
     props.loginValue(values);
   };
 
   return (
-    <Form name="basic" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }} initialValues={{ remember: true }} onFinish={onFinish}>
-      <Form.Item label="Email" name="Email" rules={[{ required: true, message: 'Veuillez entrer un email!' }]}>
+    <Form name="basic" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }} initialValues={{ remember: true }} onFinish={(e) => handlePost(e)}>
+      <Form.Item
+        label="Email"
+        value={email}
+        name="Email"
+        onChange={(e) => setEmail(e.target.value)}
+        rules={[{ required: true, message: 'Veuillez entrer un email!' }]}>
         <Input />
       </Form.Item>
 
-      <Form.Item label="Password" name="password" rules={[{ required: true, message: 'Veuillez entrer un mot de passe!' }]}>
+      <Form.Item
+        label="Password"
+        value={password}
+        name="password"
+        onChange={(e) => setPassword(e.target.value)}
+        rules={[{ required: true, message: 'Veuillez entrer un mot de passe!' }]}>
         <Input.Password />
       </Form.Item>
-
-      <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-        <Checkbox> Se souvenir </Checkbox>
-      </Form.Item>
-
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" htmlType="submit">
+        <Button type="submit" htmlType="submit">
           Connexion
         </Button>
       </Form.Item>
