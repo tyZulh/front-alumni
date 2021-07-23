@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import Cv from '../UploadCv/UploadCv';
 import { Input, Checkbox, Modal } from 'antd';
 
 import { UserOutlined, LinkedinOutlined, PhoneOutlined } from '@ant-design/icons';
@@ -87,7 +86,6 @@ function Registertwo(props) {
         <Input placeholder="Metier" value={job} onChange={(e) => setJob(e.target.value)} prefix={<UserOutlined />} />
         <Input placeholder="Entreprise" value={company} onChange={(e) => setCompany(e.target.value)} prefix={<UserOutlined />} />
         <Input placeholder="Dernier Master obtenu" value={masterDegree} onChange={(e) => setMasterDegree(e.target.value)} prefix={<UserOutlined />} />
-        <Cv />
         <form ref={refCv}>
           <div style={{ display: 'flex', backgroundColor: 'white' }}>
             <input type="file" name="cv" encType="multipart/form-data" onChange={changeHandler} style={{ backgroundColor: 'white' }} />

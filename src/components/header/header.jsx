@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import Logo from './img/logoo.png';
 import Register from '../modal/Register';
 import Registertwo from '../modal/RegisterTwo';
@@ -44,19 +43,20 @@ export default function header() {
     if (infoModal1 && infoModal2) {
       const postData = async () => {
         const user = await axios.post('http://localhost:5006/users/', object3);
-        if (picture.get('picture')) {
+
+        if (picture.get('picture').name.length > 1) {
           const options = {
             method: 'POST',
-            url: `http://localhost:5006/users/${user.data.id}/picture`,
+            url: `http://localhost:5006/users/${user.data.student_id}/picture`,
             data: picture,
             headers: { 'Content-Type': 'multipart/form-data' },
           };
           await axios(options);
         }
-        if (cv.get('cv')) {
+        if (cv.get('cv').name.length > 1) {
           const optionsCv = {
             method: 'POST',
-            url: `http://localhost:5006/users/${user.data.id}/cv`,
+            url: `http://localhost:5006/users/${user.data.student_id}/cv`,
             data: cv,
             headers: { 'Content-Type': 'multipart/form-data' },
           };
