@@ -35,7 +35,7 @@ export default function ListUsers(props) {
           props.valueUser.map((item, index) => (
             <ListItem button divider alignItems="flex-start" key={index}>
               <ListItemAvatar>
-                <Avatar alt="image" src={item.picture ? `data:image/jpeg;base64, ${item.picture}` : null} />
+                <Avatar className="avatar" alt="image" src={item.picture ? `data:image/jpeg;base64, ${item.picture}` : null} />
               </ListItemAvatar>
               <ListItemText
                 primary={`${item.firstname} ${item.lastname}`}

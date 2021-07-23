@@ -8,7 +8,6 @@ function ModalLogin(props) {
   const [valueLogin, setValueLogin] = useState(null);
   useEffect(() => {
     if (valueLogin !== null) {
-      console.log('Tkt Thomas on garde juste ce console.log');
     }
   }, [valueLogin]);
 
