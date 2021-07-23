@@ -4,20 +4,19 @@ import { Input } from 'antd';
 import { UserOutlined, MailOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Select } from 'antd';
 import { DatePicker, Space } from 'antd';
-
 import axios from 'axios';
 
 import './Register.css';
 
 function Register(props) {
   const [jobList, setJobList] = useState([]);
-  const [firstname, setFirstName] = useState('ok');
+  const [firstname, setFirstName] = useState('');
   const [admin, setAdmin] = useState(0);
   const [validate, setValidate] = useState(1);
-  const [lastname, setLastName] = useState('ok');
-  const [email, setEmail] = useState('ok');
-  const [password, setPassword] = useState('ok');
-  const [confirmPassword, setConfirmPassword] = useState('ok');
+  const [lastname, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [idSchool1, setIdSchool1] = useState('');
   const [idSchool2, setIdSchool2] = useState('');
   const [job_categorie_id, setJobCategorieId] = useState('');
@@ -49,10 +48,10 @@ function Register(props) {
       props.info(info);
       props.close(false);
       props.next(true);
-      let confirmOK = document.querySelector('.confirm');
+      let confirmOK = document.querySelector('confirm');
       confirmOK.style.display = 'none';
     } else {
-      let confirm = document.querySelector('.confirm');
+      let confirm = document.querySelector('confirm');
       confirm.style.display = 'block';
     }
   };
@@ -85,16 +84,49 @@ function Register(props) {
 
   return (
     <>
-      <Modal title="Inscription" visible={props.openModal} onOk={handleOk} onCancel={handleCancel} okText="Suivant" cancelText="Annuler">
-        <Input value={firstname} onChange={(e) => setFirstName(e.target.value)} placeholder="Prénom *" prefix={<UserOutlined />} />
+      <Modal
+        className="modal-register"
+        title="Inscription"
+        visible={props.openModal}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        okText="Suivant"
+        cancelText="Annuler">
+        <Input
+          className="input-modal"
+          value={firstname}
+          onChange={(e) => setFirstName(e.target.value)}
+          placeholder="Prénom *"
+          prefix={<UserOutlined />}
+        />
 
-        <Input value={lastname} onChange={(e) => setLastName(e.target.value)} placeholder="Nom *" prefix={<UserOutlined />} required="required" />
+        <Input
+          className="input-modal"
+          value={lastname}
+          onChange={(e) => setLastName(e.target.value)}
+          placeholder="Nom *"
+          prefix={<UserOutlined />}
+          required="required"
+        />
 
-        <Input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email *" prefix={<MailOutlined />} required="required" />
-
-        <Input.Password value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Entrer votre mot de passe * " />
+        <Input
+          className="input-modal"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email *"
+          prefix={<MailOutlined />}
+          required="required"
+        />
 
         <Input.Password
+          className="input-modal"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Entrer votre mot de passe * "
+        />
+
+        <Input.Password
+          className="input-modal"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           placeholder="Confirmer votre mot de passe *"
@@ -111,7 +143,7 @@ function Register(props) {
               <DatePicker style={{ width: '120%' }} placeholder="Année de diplôme *" onChange={onChange} picker="year" />
             </Space>
           </div>
-          <div className="dateJob">
+          <div className="dateJob2">
             <Select style={{ width: '50%' }} placeholder="Sélectionner votre cursus" onChange={handleChangeTwo}>
               <Option value="1">College de droit</Option>
               <Option value="2">Ecole de droit</Option>
@@ -121,17 +153,18 @@ function Register(props) {
               <DatePicker style={{ width: '120%' }} placeholder="Année de diplôme" onChange={onChangeTwo} picker="year" />
             </Space>
           </div>
-          <Select style={{ width: '100%' }} defaultValue="Profession actuelle" onChange={prof}>
-            {jobList.length &&
-              jobList.map((job) => {
-                return (
-                  <Option key={job.id} value={job.id}>
-                    {job.job}
-                  </Option>
-                );
-              })}
-          </Select>
         </div>
+        <Select style={{ width: '100%' }} defaultValue="Profession actuelle" onChange={prof}>
+          {jobList.length &&
+            jobList.map((job) => {
+              return (
+                <Option key={job.id} value={job.id}>
+                  {job.job}
+                </Option>
+              );
+            })}
+        </Select>
+
         <div>
           <p className="confirm"> Veuillez remplir tous les champs *</p>
         </div>

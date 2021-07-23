@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { Input, Checkbox, Modal } from 'antd';
-
 import { UserOutlined, LinkedinOutlined, PhoneOutlined } from '@ant-design/icons';
+
+import './RegisterTwo.css';
 
 function Registertwo(props) {
   const [phone, setPhone] = useState('');
@@ -61,7 +62,7 @@ function Registertwo(props) {
   return (
     <>
       <Modal title="Inscription" visible={props.openModalTwo} onOk={handleOk} onCancel={handleCancel}>
-        <div>
+        <div className="modal-two">
           <label htmlFor="files" id="lab-picture" style={{ backgroundImage: `url(${sourcePicture})` }}>
             {sourcePicture ? null : (
               <p style={{ display: 'flex', flexDirection: 'column' }}>
@@ -71,6 +72,7 @@ function Registertwo(props) {
           </label>
           <form ref={refPicture}>
             <input
+              className="button-cv"
               id="files"
               style={{ visibility: 'hidden' }}
               name="picture"
@@ -81,18 +83,37 @@ function Registertwo(props) {
             />
           </form>
         </div>
-        <Input placeholder="Téléphone" value={phone} onChange={(e) => setPhone(e.target.value)} prefix={<PhoneOutlined />} />
-        <Input placeholder="Linkedin" value={linkedin} onChange={(e) => setLinkedin(e.target.value)} prefix={<LinkedinOutlined />} />
-        <Input placeholder="Metier" value={job} onChange={(e) => setJob(e.target.value)} prefix={<UserOutlined />} />
-        <Input placeholder="Entreprise" value={company} onChange={(e) => setCompany(e.target.value)} prefix={<UserOutlined />} />
-        <Input placeholder="Dernier Master obtenu" value={masterDegree} onChange={(e) => setMasterDegree(e.target.value)} prefix={<UserOutlined />} />
+        <Input className="input-Two" placeholder="Téléphone" value={phone} onChange={(e) => setPhone(e.target.value)} prefix={<PhoneOutlined />} />
+        <Input
+          className="input-Two"
+          placeholder="Linkedin"
+          value={linkedin}
+          onChange={(e) => setLinkedin(e.target.value)}
+          prefix={<LinkedinOutlined />}
+        />
+        <Input className="input-Two" placeholder="Metier" value={job} onChange={(e) => setJob(e.target.value)} prefix={<UserOutlined />} />
+        <Input
+          className="input-Two"
+          placeholder="Entreprise"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+          prefix={<UserOutlined />}
+        />
+        <Input
+          className="input-Two"
+          placeholder="Dernier Master obtenu"
+          value={masterDegree}
+          onChange={(e) => setMasterDegree(e.target.value)}
+          prefix={<UserOutlined />}
+        />
+
         <form ref={refCv}>
           <div style={{ display: 'flex', backgroundColor: 'white' }}>
             <input type="file" name="cv" encType="multipart/form-data" onChange={changeHandler} style={{ backgroundColor: 'white' }} />
           </div>
         </form>
         <TextArea rows={4} placeholder="présente-toi" value={bio} onChange={(e) => setBio(e.target.value)} />
-        <Checkbox onChange={onChange}>Checkbox</Checkbox>
+        <Checkbox onChange={onChange}>Privé</Checkbox>
       </Modal>
     </>
   );

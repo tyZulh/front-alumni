@@ -1,25 +1,43 @@
-.ant-input-affix-wrapper {
-  margin: 4px;
+ .input-modal {
+  margin: 8px;
+}
+
+ .input-modal {
+  border: 1px solid #862628;
+}
+
+.ant-modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .ant-select-selector {
   margin: 4px;
 }
 
-.ant-picker {
-  margin:  4px;
-}
-
 .dateJob {
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: space-around;
+ flex-direction: row;
+  width: 100%;
+}
+
+.dateJob2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   flex-direction: row;
+  width: 100%;
 }
 
 .confirm{
   color: red;
   display: none;
+  font-size: 8px;
 }
 
 .star-box {
@@ -45,7 +63,7 @@ width:60px;
 }
 
 #lab-picture:hover {
-  border: rgb(0, 166, 255) dotted 2px;
+  border: #862628 dotted 2px;
 }
 
 #picture-span {
@@ -70,3 +88,31 @@ width:60px;
 .ant-modal-footer .ant-btn:hover {
   border : 1px solid gray;
 }
+
+.date-job-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+   width: 100%;
+}
+
+.ant-select-customize-input{
+  width: 200px;
+}
+
+.input-Two{
+  margin: 8px;
+}
+
+.button-cv {
+  margin: 8px;
+}
+
+.modal-two {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+

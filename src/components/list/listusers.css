@@ -1,9 +1,4 @@
-#container-list{
-    margin: auto;
-    padding: 3%;
-    overflow: auto;
-    height: 100%;
-}
+
 
 .school-tag {
     background-color: #7b1420d4;
@@ -12,4 +7,9 @@
     padding: 4px 7px;
     margin-left: 10px !important;
     font-size: 14px !important;
+}
+
+.avatar {
+    border: 1px solid #7b1420d4;
+    width: 100px;
 }

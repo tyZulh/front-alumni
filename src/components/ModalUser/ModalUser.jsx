@@ -3,17 +3,22 @@ import { Modal } from 'antd';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import './ModalUser.css';
-import email from '../img/email.png';
+import email from '../img/mail.png';
 import linkedin from '../img/linkedin.png';
 import phone from '../img/phone.png';
 
 function ModalUser(props) {
   const [showPhone, setShowPhone] = useState(false);
+  const [showEmail, setShowEmail] = useState(false);
 
   const handlePhone = () => {
     setShowPhone(!showPhone);
+    setShowEmail(false);
   };
-
+  const handleEmail = () => {
+    setShowEmail(!showEmail);
+    setShowPhone(false);
+  };
   const handleCancel = () => {
     props.cancelModal(false);
   };
@@ -33,9 +38,10 @@ function ModalUser(props) {
               <h1 className="name-user">
                 {props.userId.firstname} {props.userId.lastname}
               </h1>
-              <p className="detail">{props.userId.job}</p>
-              <p className="detail">{props.userId.jobDetail}</p>
-              <p className="detail">{props.userId.company}</p>
+              <div className="line"></div>
+              <p className="profession">{props.userId.job}</p>
+              <p className="detail-job">{props.userId.jobDetail}</p>
+              <p className="detail-job">{props.userId.company}</p>
               <p>{props.userId.master_degree}</p>
 
               <p className="detail">
@@ -55,23 +61,30 @@ function ModalUser(props) {
               <a href={`data:application/pdf;base64, ${props.userId.cv}`} download={`CV-${props.userId.firstname}-${props.userId.lastname}`}>
                 <button>Télécharger mon CV</button>
               </a>
+              <div className="line"></div>
               <h3 className="contact-title">CONTACT</h3>
             </div>
             <div className="contact-container">
               <a href={props.userId.linkedin}>
                 <img className="logo" src={linkedin} alt="Linkedin" />
               </a>
-              <a href={props.userId.email}>
-                <img className="logo" src={email} alt="mail" />
-              </a>
-              <img className="logo" src={phone} alt="téléphone" onClick={handlePhone} />
-            </div>
-            <div className="phone-box">
-              {showPhone && (
-                <>
-                  <p className="phone">{props.userId.phone}</p>
-                </>
-              )}
+              <div className="mail-box">
+                <img className="logo" src={email} alt="mail" onClick={handleEmail} />
+                {showEmail && (
+                  <>
+                    <p className="email">{props.userId.email}</p>
+                  </>
+                )}
+              </div>
+              <div className="mail-box">
+                <img className="logo" src={phone} alt="téléphone" onClick={handlePhone} />
+
+                {showPhone && (
+                  <>
+                    <p className="phone">{props.userId.phone}</p>
+                  </>
+                )}
+              </div>
             </div>
           </>
         )}
