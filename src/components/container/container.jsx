@@ -10,6 +10,11 @@ import './container.css';
 
 export default function ContainerBlock() {
   useEffect(async () => {
+    // const item = localStorage.getItem('email');
+    // if (item) {
+    //   const userProfil = await axios.get(`http://localhost:5006/users/${item}`);
+    //   console.log(userProfil);
+    // }
     const myData = await axios.get('http://localhost:5006/users/');
     setdataUsersUsers(myData.data);
     setFilterArray(myData.data);

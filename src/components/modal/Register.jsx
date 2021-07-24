@@ -13,7 +13,7 @@ function Register(props) {
   const [jobList, setJobList] = useState([]);
   const [firstname, setFirstName] = useState('ok');
   const [admin, setAdmin] = useState(0);
-  const [validate, setValidate] = useState(1);
+  const [validate, setValidate] = useState(0);
   const [lastname, setLastName] = useState('ok');
   const [email, setEmail] = useState('ok');
   const [password, setPassword] = useState('ok');

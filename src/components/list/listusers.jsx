@@ -30,7 +30,6 @@ export default function ListUsers(props) {
   const showModale = async (id) => {
     const user = await axios.get(`http://localhost:5006/users/id/${id}`);
     setUserId(user.data[0]);
-    console.log(user.data[0]);
     setShowModal(true);
   };
   return (
@@ -38,8 +37,6 @@ export default function ListUsers(props) {
       <List compopent="nav" className={classes.root} aria-label="mailbox folders">
         {props.valueUser &&
           props.valueUser.map((item, index) => {
-            console.log();
-
             return (
               <ListItem button divider alignItems="flex-start" key={index} onClick={() => showModale(item.student_id)}>
                 <ListItemAvatar>

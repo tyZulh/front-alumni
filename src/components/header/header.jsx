@@ -7,6 +7,8 @@ import ModalLogin from '../ModalLogin/ModalLogin';
 import Modification from '../modalModification/Modification';
 import ModificationTwo from '../modalModification/ModificationTwo';
 import './header.css';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
 
 export default function header() {
   const [openModal, setOpenModal] = useState(false);
@@ -74,29 +76,39 @@ export default function header() {
           <img className="logo-header" src={Logo} alt="logo" />
         </div>
         <div className="connection-zone">
-          <div className="profil-box">
-            {users.map((user) => {
-              return (
-                <>
-                  <div div key={user.email} className="profil-connected" role="button" tabIndex={0} onClick={() => setOpenModalModif(true)}>
-                    <div className="profil-picture">{user.picture}</div>
-                    <div className="profil-name">{user.firstname}</div>
-                  </div>
-                </>
-              );
-            })}
-            <button className="disconnection" onClick={ClearLocal}>
-              Déconnexion
-            </button>
-          </div>
-          <div className="button-box">
-            <button className="headerBtn" onClick={() => setOpenModal(true)}>
-              Inscription
-            </button>
-            <button className="headerBtn" onClick={() => setOpenLogin(true)}>
-              Connexion
-            </button>
-          </div>
+          {users[0] && (
+            <div className="profil-box">
+              {users.map((user) => {
+                return (
+                  <>
+                    <div div key={user.email} className="profil-connected" role="button" tabIndex={0} onClick={() => setOpenModalModif(true)}>
+                      <ListItemAvatar>
+                        <Avatar alt="image" src={user.picture ? `data:image/jpeg;base64, ${user.picture}` : null} />
+                      </ListItemAvatar>
+                      <div className="profil-name">
+                        {user.firstname}
+                        {user.lastname}
+                      </div>
+                    </div>
+                  </>
+                );
+              })}
+              <button className="disconnection" onClick={ClearLocal}>
+                Déconnexion
+              </button>
+            </div>
+          )}
+
+          {!users[0] && (
+            <div className="button-box">
+              <button className="headerBtn" onClick={() => setOpenModal(true)}>
+                Inscription
+              </button>
+              <button className="headerBtn" onClick={() => setOpenLogin(true)}>
+                Connexion
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <Register

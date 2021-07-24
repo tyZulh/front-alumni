@@ -6,25 +6,33 @@ import './ModalLogin.css';
 
 function ModalLogin(props) {
   const [valueLogin, setValueLogin] = useState(null);
-  // const [isModalVisible, setIsModalVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     if (valueLogin !== null) {
       const handlePost = async () => {
-        const result = await axios.post('http://localhost:5006/users/signIn', valueLogin);
-        localStorage.setItem('token', result.headers.accesstoken);
-        localStorage.setItem('email', valueLogin.Email);
-        handleCancel();
-        document.location.reload();
+        try {
+          const result = await axios.post('http://localhost:5006/users/signIn', valueLogin);
+          console.log('hello', result);
+          localStorage.setItem('token', result.headers.accesstoken);
+          localStorage.setItem('email', valueLogin.Email);
+          handleCancel();
+          document.location.reload();
+        } catch (e) {
+          if (e.response.status === 404) {
+            setErrorMessage('Adresse email ou mot de passe non-valide');
+          }
+          if (e.response.status === 402) {
+            setErrorMessage('Votre inscription est en cours de validation');
+          }
+        }
       };
       handlePost();
     }
   }, [valueLogin]);
 
-  const handleOk = () => {
+  const handleOk = async () => {
     props.close(false);
-    // setIsModalVisible(false);
-    console.log('ok');
   };
 
   const handleCancel = () => {
@@ -41,6 +49,7 @@ function ModalLogin(props) {
         onCancel={handleCancel}
         cancelButtonProps={{ style: { display: 'none' } }}>
         <Login loginValue={(value) => setValueLogin(value)} />
+        {errorMessage && <p style={{ color: 'red', textAlign: 'center' }}>{errorMessage}</p>}
       </Modal>
     </>
   );
