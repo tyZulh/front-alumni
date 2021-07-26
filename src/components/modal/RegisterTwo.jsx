@@ -91,7 +91,13 @@ function Registertwo(props) {
           onChange={(e) => setLinkedin(e.target.value)}
           prefix={<LinkedinOutlined />}
         />
-        <Input className="input-Two" placeholder="Metier" value={job} onChange={(e) => setJob(e.target.value)} prefix={<UserOutlined />} />
+        <Input
+          className="input-Two"
+          placeholder="Intitulé exact de votre poste actuel"
+          value={job}
+          onChange={(e) => setJob(e.target.value)}
+          prefix={<UserOutlined />}
+        />
         <Input
           className="input-Two"
           placeholder="Entreprise"
@@ -101,7 +107,7 @@ function Registertwo(props) {
         />
         <Input
           className="input-Two"
-          placeholder="Dernier Master obtenu"
+          placeholder="Intitulé de votre diplôme de Master"
           value={masterDegree}
           onChange={(e) => setMasterDegree(e.target.value)}
           prefix={<UserOutlined />}
@@ -112,7 +118,12 @@ function Registertwo(props) {
             <input type="file" name="cv" encType="multipart/form-data" onChange={changeHandler} style={{ backgroundColor: 'white' }} />
           </div>
         </form>
-        <TextArea rows={4} placeholder="présente-toi" value={bio} onChange={(e) => setBio(e.target.value)} />
+        <TextArea
+          rows={4}
+          placeholder="Présentez en quelques mots vos parcours universitaire et professionnel"
+          value={bio}
+          onChange={(e) => setBio(e.target.value)}
+        />
         <Checkbox onChange={onChange}>Privé</Checkbox>
       </Modal>
     </>

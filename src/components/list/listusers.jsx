@@ -21,6 +21,14 @@ const useStyles = makeStyles((theme) => ({
   inline: {
     display: 'inline',
   },
+  small: {
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+  },
+  large: {
+    width: theme.spacing(8),
+    height: theme.spacing(8),
+  },
 }));
 
 export default function ListUsers(props) {
@@ -32,6 +40,7 @@ export default function ListUsers(props) {
     setUserId(user.data[0]);
     setShowModal(true);
   };
+
   return (
     <>
       <List compopent="nav" className={classes.root} aria-label="mailbox folders">
@@ -40,14 +49,20 @@ export default function ListUsers(props) {
             return (
               <ListItem button divider alignItems="flex-start" key={index} onClick={() => showModale(item.student_id)}>
                 <ListItemAvatar>
-                  <Avatar alt="image" src={item.picture ? `data:image/jpeg;base64, ${item.picture}` : null} />
+                  <Avatar
+                    className={classes.large}
+                    style={{ marginBottom: '10px' }}
+                    alt="image"
+                    src={item.picture ? `data:image/jpeg;base64, ${item.picture}` : null}
+                  />
                 </ListItemAvatar>
                 <ListItemText
+                  style={{ marginLeft: '10px' }}
                   primary={`${item.firstname} ${item.lastname}`}
                   secondary={
                     <>
                       <React.Fragment>
-                        <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
+                        <Typography component="span" variant="body2" className="job-tag">
                           {item.job}
                         </Typography>
                       </React.Fragment>

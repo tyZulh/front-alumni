@@ -122,18 +122,19 @@ function Register(props) {
           className="input-modal"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Entrer votre mot de passe * "
+          placeholder="Entrez votre mot de passe * "
         />
 
         <Input.Password
           className="input-modal"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Confirmer votre mot de passe *"
+          placeholder="Confirmez votre mot de passe *"
           iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
         />
 
         <div className="date-job-box">
+          <p>Votre cursus au Collège et à l'Ecole de droit :</p>
           <div className="dateJob">
             <Select style={{ width: '50%' }} placeholder="Sélectionner votre cursus *" onChange={handleChange}>
               <Option value="1">College de droit</Option>

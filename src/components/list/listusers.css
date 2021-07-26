@@ -13,3 +13,28 @@
     border: 1px solid #7b1420d4;
     width: 100px;
 }
+
+.job-tag {
+    display: inline-block;
+    
+    color:black;
+    width: 258px;
+   
+    
+}
+
+.MuiListItemText-primary{
+    font-size: 18px !important;
+    font-weight: bold !important;
+}
+
+/* .job-box{
+    display: inline-block;
+    width: 300px;
+    margin: 0;
+} */
+
+.MuiTypography-displayBlock{
+    display: flex;
+    flex-direction: row;
+}
