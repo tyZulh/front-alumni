@@ -92,7 +92,7 @@ function Registertwo(props) {
           </div>
         </form>
         <TextArea rows={4} placeholder="présente-toi" value={bio} onChange={(e) => setBio(e.target.value)} />
-        <Checkbox onChange={onChange}>Checkbox</Checkbox>
+        <Checkbox onChange={onChange}>Profil public</Checkbox>
       </Modal>
     </>
   );

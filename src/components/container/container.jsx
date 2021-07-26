@@ -5,26 +5,43 @@ import Profession from '../Filters/Profession/profession';
 import School from '../Filters/School/school';
 import Anneeyears from '../Filters/Annee/annee';
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 
 import './container.css';
 
 export default function ContainerBlock() {
-  useEffect(async () => {
-    // const item = localStorage.getItem('email');
-    // if (item) {
-    //   const userProfil = await axios.get(`http://localhost:5006/users/${item}`);
-    //   console.log(userProfil);
-    // }
-    const myData = await axios.get('http://localhost:5006/users/');
-    setdataUsersUsers(myData.data);
-    setFilterArray(myData.data);
-  }, []);
   const [dataUsers, setdataUsersUsers] = useState([]);
   const [filterArray, setFilterArray] = useState([]);
   const [userRecherche, setUserRecherche] = useState([]);
   const [job, setjob] = useState([]);
   const [years, setYears] = useState();
   const [school, setSchool] = useState([]);
+  const [waitingUser, setWaitingUser] = useState();
+
+  useEffect(async () => {
+    let myData;
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded = jwt_decode(token).userInfo;
+      if (decoded.admin === 1) {
+        const waiting = await axios.get('http://localhost:5006/users/admin', {
+          headers: {
+            Authorization: 'bearer ' + localStorage.getItem('token'),
+          },
+        });
+        setWaitingUser(waiting.data);
+      }
+      myData = await axios.get('http://localhost:5006/users/', {
+        headers: {
+          Authorization: 'bearer ' + localStorage.getItem('token'),
+        },
+      });
+    } else {
+      myData = await axios.get('http://localhost:5006/users/');
+    }
+    setdataUsersUsers(myData.data);
+    setFilterArray(myData.data);
+  }, []);
 
   useEffect(() => {
     filter();
@@ -88,7 +105,7 @@ export default function ContainerBlock() {
           <Anneeyears years={(value) => setYears(value)} />
         </div>
         <div id="container-filtre">
-          <ListUsers valueUser={resultat()} />
+          <ListUsers waitingUser={waitingUser} valueUser={resultat()} />
         </div>
       </div>
     </div>

@@ -13,3 +13,12 @@
     margin-left: 10px !important;
     font-size: 14px !important;
 }
+
+#delete-button {
+    background-color: red;
+    color:white;
+}
+
+#delete-button:hover {
+   opacity: 0.5;
+}

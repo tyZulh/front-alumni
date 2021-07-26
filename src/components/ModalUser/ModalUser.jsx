@@ -17,7 +17,6 @@ function ModalUser(props) {
   const handleCancel = () => {
     props.cancelModal(false);
   };
-  console.log(props);
   return (
     <>
       <Modal
