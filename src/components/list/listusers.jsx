@@ -40,6 +40,13 @@ export default function ListUsers(props) {
     setUserId(user.data[0]);
     setShowModal(true);
   };
+  function UpperCase(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  function UpperCaseFull(string) {
+    return string.toUpperCase('');
+  }
 
   return (
     <>
@@ -58,7 +65,7 @@ export default function ListUsers(props) {
                 </ListItemAvatar>
                 <ListItemText
                   style={{ marginLeft: '10px' }}
-                  primary={`${item.firstname} ${item.lastname}`}
+                  primary={`${UpperCase(item.firstname)} ${UpperCaseFull(item.lastname)}`}
                   secondary={
                     <>
                       <React.Fragment>
@@ -69,7 +76,7 @@ export default function ListUsers(props) {
                       <React.Fragment>
                         {item.schools.length === 2 ? (
                           <>
-                            <Typography component="span" className="school-tag">
+                            <Typography component="span" className="school-tag" id="schoolid">
                               {`${item.schools[0].title} ${item.schools[0].year_of_promotion}`}
                             </Typography>
                             <Typography component="span" className="school-tag">

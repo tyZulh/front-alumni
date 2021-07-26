@@ -42,6 +42,11 @@ function ModalUser(props) {
   const handleCancel = () => {
     props.cancelModal(false);
   };
+
+  function UpperCase(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   return (
     <>
       <Modal
@@ -56,13 +61,13 @@ function ModalUser(props) {
                 <Avatar className={classes.large} alt="image" src={props.userId.picture ? `data:image/jpeg;base64, ${props.userId.picture}` : null} />
               </ListItemAvatar>
               <h1 className="name-user">
-                {props.userId.firstname} <span className="name">{props.userId.lastname}</span>
+                {UpperCase(props.userId.firstname)} <span className="name">{UpperCase(props.userId.lastname)}</span>
               </h1>
               <div className="line"></div>
               <p className="profession">{props.userId.job}</p>
               <p className="detail-job">{props.userId.jobDetail}</p>
-              <p className="detail-job">{props.userId.company}</p>
-              <p>{props.userId.master_degree}</p>
+              <p className="detail-job">{UpperCase(props.userId.company)}</p>
+              <p>{UpperCase(props.userId.master_degree)}</p>
 
               <p className="detail">
                 <span className="school"> {props.userId.schools[0].title}</span> -{' '}
@@ -76,7 +81,7 @@ function ModalUser(props) {
                   </p>
                 </>
               ) : null}
-              <p className="bio">{props.userId.bio}</p>
+              <p className="bio">{UpperCase(props.userId.bio)}</p>
 
               <a href={`data:application/pdf;base64, ${props.userId.cv}`} download={`CV-${props.userId.firstname}-${props.userId.lastname}`}>
                 <button className="btn-download">Télécharger mon CV</button>

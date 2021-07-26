@@ -15,7 +15,7 @@
 }
 
 .ant-select-selector {
-  margin: 4px;
+  /* margin: 4px; */
 }
 
 .dateJob {
@@ -115,4 +115,3 @@ width:60px;
   align-items: flex-start;
   justify-content: center;
 }
-
