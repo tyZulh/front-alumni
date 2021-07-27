@@ -14,6 +14,7 @@ function Registertwo(props) {
   const [privateInfo, setPrivateInfo] = useState(0);
   const [sourcePicture, setSourcePicture] = useState(null);
   const [isSelected, setIsSelected] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const refPicture = useRef();
   const refCv = useRef();
@@ -59,9 +60,18 @@ function Registertwo(props) {
     setIsSelected(true);
   };
 
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk2 = () => {
+    setIsModalVisible(false);
+    document.location.reload();
+  };
+
   return (
     <>
-      <Modal title="Inscription" visible={props.openModalTwo} onOk={handleOk} onCancel={handleCancel}>
+      <Modal title="Inscription" visible={props.openModalTwo} onOk={(handleOk, showModal)} onCancel={handleCancel}>
         <div className="modal-two">
           <label htmlFor="files" id="lab-picture" style={{ backgroundImage: `url(${sourcePicture})` }}>
             {sourcePicture ? null : (
@@ -125,6 +135,11 @@ function Registertwo(props) {
           onChange={(e) => setBio(e.target.value)}
         />
         <Checkbox onChange={onChange}>Privé</Checkbox>
+      </Modal>
+      <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk2}>
+        <p>Inscription effectué</p>
+        <p>Veuillez attendre qu&apos;un administrateur valide votre inscription</p>
+        <p>Vous recevrez un Email sous peu</p>
       </Modal>
     </>
   );
