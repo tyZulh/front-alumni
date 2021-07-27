@@ -105,27 +105,23 @@ function ModalUser(props) {
               <a href={props.userId.linkedin}>
                 <img className="logo" src={linkedin} alt="Linkedin" />
               </a>
-              <a href={props.userId.email}>
-                <img className="logo" src={email} alt="mail" />
-              </a>
-              <img className="logo" src={phone} alt="téléphone" onClick={handlePhone} />
-            </div>
-            <div className="phone-box">
-              {showPhone && (
-                <>
-                  <p className="phone">{props.userId.phone}</p>
-                </>
-              )}
-              {props.userId.validate === 0 && (
-                <>
-                  <button onClick={() => deleteProfil(props.userId.student_id)} style={{ backgroundColor: 'red' }}>
-                    X
-                  </button>
-                  <button onClick={() => validateProfil(props.userId.student_id)} style={{ backgroundColor: 'green' }}>
-                    V
-                  </button>
-                </>
-              )}
+              <div className="mail-box">
+                <img className="logo" src={email} alt="mail" onClick={handleEmail} />
+                {showEmail && (
+                  <>
+                    <p className="email">{props.userId.email}</p>
+                  </>
+                )}
+              </div>
+              <div className="mail-box">
+                <img className="logo" src={phone} alt="téléphone" onClick={handlePhone} />
+
+                {showPhone && (
+                  <>
+                    <p className="phone">{props.userId.phone}</p>
+                  </>
+                )}
+              </div>
             </div>
           </>
         )}
