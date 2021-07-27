@@ -77,13 +77,10 @@ export default function ContainerBlock() {
 
   const filterSchool = (b = filterArray) => {
     let resultSchool = [];
+
     school.forEach((elem) => {
-      const tempResult = b.filter((item) => {
-        if (item.schools.some((school) => school.title === elem)) {
-          return item;
-        }
-      });
-      resultSchool = [...resultSchool, ...tempResult];
+      const tempResultSchool = b.filter((item) => item.promo.includes(elem));
+      resultSchool = [...resultSchool, ...tempResultSchool];
     });
     return resultSchool;
   };
@@ -101,7 +98,7 @@ export default function ContainerBlock() {
     if (years) {
       return filterArray
         .filter((users) => users.firstname.toLowerCase().includes(userRecherche) || users.lastname.toLowerCase().includes(userRecherche))
-        .filter((an) => an.schools.some((year) => year.year_of_promotion == years));
+        .filter((an) => an.annee == years);
     } else {
       return filterArray.filter(
         (users) => users.firstname.toLowerCase().includes(userRecherche) || users.lastname.toLowerCase().includes(userRecherche),
