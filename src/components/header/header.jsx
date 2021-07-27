@@ -80,8 +80,8 @@ export default function header() {
             <div className="profil-box">
               {users.map((user) => {
                 return (
-                  <>
-                    <div key={user.email} className="profil-connected" role="button" tabIndex={0} onClick={() => setOpenModalModif(true)}>
+                  <div key={user.email}>
+                    <div className="profil-connected" role="button" tabIndex={0} onClick={() => setOpenModalModif(true)}>
                       <ListItemAvatar>
                         <Avatar alt="image" src={user.picture ? `data:image/jpeg;base64, ${user.picture}` : null} />
                       </ListItemAvatar>
@@ -90,7 +90,7 @@ export default function header() {
                         {user.lastname}
                       </div>
                     </div>
-                  </>
+                  </div>
                 );
               })}
               <button className="disconnection" onClick={ClearLocal}>

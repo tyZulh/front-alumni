@@ -23,6 +23,7 @@ function Register(props) {
   const [job_categorie_id, setJobCategorieId] = useState('');
   const [year1, setyear1] = useState('');
   const [year2, setyear2] = useState('');
+  const [errorMessage, setErrorMessage] = useState();
 
   useEffect(() => {
     axios.get('http://localhost:5006/users/job').then((res) => {
@@ -44,16 +45,23 @@ function Register(props) {
     year2,
   };
 
-  const handleOk = () => {
-    if (firstname && lastname && email && password && confirmPassword && idSchool1 && job_categorie_id && year1 && password === confirmPassword) {
-      props.info(info);
-      props.close(false);
-      props.next(true);
-      let confirmOK = document.querySelector('.confirm');
-      confirmOK.style.display = 'none';
-    } else {
-      let confirm = document.querySelector('.confirm');
-      confirm.style.display = 'block';
+  const handleOk = async () => {
+    try {
+      await axios.get(`http://localhost:5006/users/check/${email}`);
+      if (firstname && lastname && email && password && confirmPassword && idSchool1 && job_categorie_id && year1 && password === confirmPassword) {
+        props.info(info);
+        props.close(false);
+        props.next(true);
+        let confirmOK = document.querySelector('.confirm');
+        confirmOK.style.display = 'none';
+      } else {
+        let confirm = document.querySelector('.confirm');
+        confirm.style.display = 'block';
+      }
+    } catch (e) {
+      if (e.response.status === 400) {
+        setErrorMessage(`L'adresse email est déjà associée à un utilisateur *`);
+      }
     }
   };
 
@@ -134,6 +142,7 @@ function Register(props) {
         </div>
         <div>
           <p className="confirm"> Veuillez remplir tous les champs *</p>
+          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </div>
       </Modal>
     </>

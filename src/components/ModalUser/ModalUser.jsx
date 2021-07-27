@@ -6,6 +6,7 @@ import './ModalUser.css';
 import email from '../img/email.png';
 import linkedin from '../img/linkedin.png';
 import phone from '../img/phone.png';
+import axios from 'axios';
 
 function ModalUser(props) {
   const [showPhone, setShowPhone] = useState(false);
@@ -17,6 +18,19 @@ function ModalUser(props) {
   const handleCancel = () => {
     props.cancelModal(false);
   };
+
+  const validateProfil = async (id) => {
+    await axios.put(`http://localhost:5006/users/validate/${id}`);
+    props.cancelModal(false);
+    props.update(id);
+  };
+
+  const deleteProfil = async (id) => {
+    await axios.delete(`http://localhost:5006/users/${id}`);
+    props.cancelModal(false);
+    props.supp(id);
+  };
+
   return (
     <>
       <Modal
@@ -70,6 +84,16 @@ function ModalUser(props) {
               {showPhone && (
                 <>
                   <p className="phone">{props.userId.phone}</p>
+                </>
+              )}
+              {props.userId.validate === 0 && (
+                <>
+                  <button onClick={() => deleteProfil(props.userId.student_id)} style={{ backgroundColor: 'red' }}>
+                    X
+                  </button>
+                  <button onClick={() => validateProfil(props.userId.student_id)} style={{ backgroundColor: 'green' }}>
+                    V
+                  </button>
                 </>
               )}
             </div>

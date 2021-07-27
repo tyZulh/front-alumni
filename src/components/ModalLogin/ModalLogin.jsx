@@ -12,7 +12,6 @@ function ModalLogin(props) {
     if (valueLogin !== null) {
       const handlePost = async () => {
         try {
-          console.log('valuelogin', valueLogin);
           const result = await axios.post('http://localhost:5006/users/signIn', valueLogin);
           localStorage.setItem('token', result.headers.accesstoken);
           localStorage.setItem('email', valueLogin.Email);

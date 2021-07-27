@@ -16,7 +16,21 @@ export default function ContainerBlock() {
   const [job, setjob] = useState([]);
   const [years, setYears] = useState();
   const [school, setSchool] = useState([]);
-  const [waitingUser, setWaitingUser] = useState();
+  const [waitingUser, setWaitingUser] = useState([]);
+
+  const validateUser = (id) => {
+    const user = waitingUser.filter((item) => item.student_id === id);
+    user[0].validate = 1;
+    setWaitingUser(waitingUser.filter((item) => item.student_id !== id));
+    setFilterArray([...dataUsers, ...user]);
+  };
+
+  const SuppUser = (id) => {
+    const user = dataUsers.filter((item) => item.student_id !== id);
+    const waiting = waitingUser.filter((item) => item.student_id !== id);
+    setFilterArray(user);
+    setWaitingUser(waiting);
+  };
 
   useEffect(async () => {
     let myData;
@@ -105,7 +119,7 @@ export default function ContainerBlock() {
           <Anneeyears years={(value) => setYears(value)} />
         </div>
         <div id="container-filtre">
-          <ListUsers waitingUser={waitingUser} valueUser={resultat()} />
+          <ListUsers update={validateUser} supp={SuppUser} waitingUser={waitingUser} valueUser={resultat()} />
         </div>
       </div>
     </div>
