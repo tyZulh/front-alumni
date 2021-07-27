@@ -134,7 +134,7 @@ function Register(props) {
         />
 
         <div className="date-job-box">
-          <p>Votre cursus au Collège et à l'Ecole de droit :</p>
+          <p>Votre cursus au Collège et à l&apos;Ecole de droit :</p>
           <div className="dateJob">
             <Select style={{ width: '50%' }} placeholder="Sélectionner votre cursus *" onChange={handleChange}>
               <Option value="1">College de droit</Option>
@@ -165,7 +165,6 @@ function Register(props) {
               );
             })}
         </Select>
-
         <div>
           <p className="confirm"> Veuillez remplir tous les champs *</p>
         </div>
