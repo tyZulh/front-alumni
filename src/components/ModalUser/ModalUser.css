@@ -41,23 +41,25 @@
     background-color: #7b1420d4;
     color: white;
     border-radius: 15px;
-    padding: 2px 6px;
+    padding: 3px 6px;
     margin-left: 10px !important;
     font-size: 14px !important;
 }
 
 .detail-job{
     margin: 2px 20px 0px 20px;
+    font-size: 15px;
+    font-weight: 600;
 }
 
 .profession {
     margin: 8px 20px 0px 20px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
 }
 
 .bio {
-    margin: 10px 40px 40px 40px;
+    margin: 20px 40px 30px 40px;
 }
 
 .year {
@@ -98,7 +100,7 @@
     color: white;
 }
 
-.name{
+ .name{
     text-transform: uppercase;
 }
 
@@ -130,4 +132,20 @@
     padding: 1px 4px;
     background-color: #df4133;
     color: white;
+}
+
+.btn-download {
+    border-radius: 25px;
+    border: 1px solid #7b1420d4 ;
+    color: #7b1420d4;
+    background-color: #fafafa;
+    font-weight: bold;
+}
+
+.btn-download:hover {
+    border-radius: 25px;
+    border: 1px solid #fafafa ;
+    color: #fafafa;
+    background-color: #7b1420d4;
+    font-weight: bold;
 }

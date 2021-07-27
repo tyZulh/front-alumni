@@ -5,11 +5,53 @@
     color: white;
     border-radius: 15px;
     padding: 4px 7px;
-    margin-left: 10px !important;
     font-size: 14px !important;
+}
+
+#schoolid {
+    margin-right: 7px;
 }
 
 .avatar {
     border: 1px solid #7b1420d4;
     width: 100px;
+}
+
+.job-tag {
+    display: inline-block;
+    color:black;
+    width: 250px;
+}
+
+.MuiListItemText-primary{
+    font-size: 18px !important;
+    font-weight: bold !important;
+}
+
+.MuiTypography-displayBlock{
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 1200px) {
+    .job-tag{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 7px !important;
+        margin-left: 2px !important;
+    }
+    #school-id {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+   .school-tag{
+        display: flex;
+        width: 150px;
+        justify-content: center;
+    }
+    #schoolid {
+        margin-bottom: 7px;
+    }
 }

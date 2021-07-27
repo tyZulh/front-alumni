@@ -14,10 +14,6 @@
   width: 100%;
 }
 
-.ant-select-selector {
-  margin: 4px;
-}
-
 .dateJob {
   display: flex;
   align-items: center;
@@ -115,4 +111,3 @@ width:60px;
   align-items: flex-start;
   justify-content: center;
 }
-

@@ -21,6 +21,14 @@ const useStyles = makeStyles((theme) => ({
   inline: {
     display: 'inline',
   },
+  small: {
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+  },
+  large: {
+    width: theme.spacing(8),
+    height: theme.spacing(8),
+  },
 }));
 
 export default function ListUsers(props) {
@@ -32,6 +40,14 @@ export default function ListUsers(props) {
     setUserId(user.data[0]);
     setShowModal(true);
   };
+  function UpperCase(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  function UpperCaseFull(string) {
+    return string.toUpperCase('');
+  }
+
   return (
     <>
       <List compopent="nav" className={classes.root} aria-label="mailbox folders">
@@ -40,21 +56,27 @@ export default function ListUsers(props) {
             return (
               <ListItem button divider alignItems="flex-start" key={index} onClick={() => showModale(item.student_id)}>
                 <ListItemAvatar>
-                  <Avatar alt="image" src={item.picture ? `data:image/jpeg;base64, ${item.picture}` : null} />
+                  <Avatar
+                    className={classes.large}
+                    style={{ marginBottom: '10px' }}
+                    alt="image"
+                    src={item.picture ? `data:image/jpeg;base64, ${item.picture}` : null}
+                  />
                 </ListItemAvatar>
                 <ListItemText
-                  primary={`${item.firstname} ${item.lastname}`}
+                  style={{ marginLeft: '10px' }}
+                  primary={`${UpperCase(item.firstname)} ${UpperCaseFull(item.lastname)}`}
                   secondary={
                     <>
                       <React.Fragment>
-                        <Typography component="span" variant="body2" className={classes.inline} color="textPrimary">
+                        <Typography component="span" variant="body2" className="job-tag">
                           {item.job}
                         </Typography>
                       </React.Fragment>
                       <React.Fragment>
                         {item.schools.length === 2 ? (
                           <>
-                            <Typography component="span" className="school-tag">
+                            <Typography component="span" className="school-tag" id="schoolid">
                               {`${item.schools[0].title} ${item.schools[0].year_of_promotion}`}
                             </Typography>
                             <Typography component="span" className="school-tag">
