@@ -58,24 +58,19 @@ overflow-y:scroll;
         top: 6vh;
         padding: 1%;
     }
-    
- }
-
+}
 
 @media (max-width: 767px) { 
     #small-container-block{
         position: relative;
         width: 100%;
         margin-top: 30px;
-       
     }
-
     #container-filtre{
         width: 90%;
     }
  }
  
-
 @media (max-width: 992px) {
     #filter-div2 {
         display: flex;
@@ -85,6 +80,5 @@ overflow-y:scroll;
         height: 708px;
     }
 }
-
 
 @media (max-width: 1200px) { }

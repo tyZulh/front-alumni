@@ -58,7 +58,6 @@
     #schoolid {
         padding: 2px 2px;
         font-size: 12px !important;
-
     }
     
     .MuiTypography-displayBlock{
@@ -66,7 +65,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
     }
 
     .MuiListItemText-primary{
@@ -80,7 +78,6 @@
         color:black;
         font-size: 12px !important;
         width: 60px;
-        
     }
 
     .MuiListItem-alignItemsFlexStart{
