@@ -54,6 +54,14 @@ function Registertwo(props) {
     const cv = new FormData(refCv.current);
     props.cv(cv);
     openNotification();
+    setPhone('');
+    setLinkedin('');
+    setJob('');
+    setCompany('');
+    setMasterDegree('');
+    setBio('');
+    setPrivateInfo(0);
+    setSourcePicture(null);
   };
 
   const handleCancel = () => {

@@ -1,5 +1,3 @@
-
-
 .school-tag {
     background-color: #7b1420d4;
     color: white;
@@ -18,11 +16,6 @@
 }
 #schoolid {
     margin-right: 7px;
-}
-
-.avatar {
-    border: 1px solid #7b1420d4;
-    width: 100px;
 }
 
 .job-tag {
@@ -63,3 +56,45 @@
         margin-bottom: 7px;
     }
 }
+
+@media (max-width: 576px) { 
+    .school-tag {
+       
+        padding: 2px 2px !important;
+        font-size: 12px !important;
+    }
+    #schoolid {
+        padding: 2px 2px;
+        font-size: 12px !important;
+    }
+    
+    .MuiTypography-displayBlock{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .MuiListItemText-primary{
+        font-size: 16px !important;
+        
+    }
+    .job-tag {
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+        color:black;
+        font-size: 12px !important;
+        width: 60px;
+    }
+
+    .MuiListItem-alignItemsFlexStart{
+        align-items: center !important;
+        align-items: center !important;
+    }
+    
+    .MuiTypography-displayBlock { 
+        display: flex !important;
+        flex-direction: column !important;
+    }
+ }
