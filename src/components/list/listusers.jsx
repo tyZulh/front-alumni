@@ -113,7 +113,7 @@ export default function ListUsers(props) {
                     </>
                   }
                 />
-                <p style={{ background: 'grey', color: 'white', borderRadius: '20px' }}>En attente</p>
+                <p className="waiting">En attente</p>
               </ListItem>
             );
           })}
@@ -161,7 +161,7 @@ export default function ListUsers(props) {
                   />
                 </div>
                 {item.validate === 1 && admin && (
-                  <button onClick={() => Delete(item.student_id)} id="delete-button">
+                  <button onClick={() => Delete(item.student_id)} id="delete-button" title="supprimer">
                     X
                   </button>
                 )}

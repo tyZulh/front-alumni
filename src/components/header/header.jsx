@@ -73,7 +73,9 @@ export default function header() {
     <>
       <div className="header">
         <div className="logo-box">
-          <img className="logo-header" src={Logo} alt="logo" />
+          <a src="https://assocollegededroitassas.fr/">
+            <img className="logo-header" src={Logo} alt="logo" />
+          </a>
         </div>
         <div className="connection-zone">
           {users[0] && (
