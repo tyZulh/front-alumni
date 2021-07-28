@@ -102,11 +102,11 @@ function ModalUser(props) {
               <h3 className="contact-title">CONTACT</h3>
             </div>
             <div className="contact-container">
-              <a href={props.userId.linkedin}>
-                <img className="logo" src={linkedin} alt="Linkedin" />
+              <a href={props.userId.linkedin} target="_blank" rel="noreferrer">
+                <img className="logo" src={linkedin} alt="Linkedin" title="Linkedin" />
               </a>
               <div className="mail-box">
-                <img className="logo" src={email} alt="mail" onClick={handleEmail} />
+                <img className="logo" src={email} alt="mail" title="Email" onClick={handleEmail} />
                 {showEmail && (
                   <>
                     <p className="email">{props.userId.email}</p>
@@ -114,7 +114,7 @@ function ModalUser(props) {
                 )}
               </div>
               <div className="mail-box">
-                <img className="logo" src={phone} alt="téléphone" onClick={handlePhone} />
+                <img className="logo" src={phone} alt="téléphone" title="Téléphone" onClick={handlePhone} />
 
                 {showPhone && (
                   <>
@@ -125,10 +125,10 @@ function ModalUser(props) {
             </div>
             {props.userId.validate === 0 && (
               <div className="box-btn-val">
-                <button className="cancel" onClick={() => deleteProfil(props.userId.student_id)}>
+                <button className="cancel" title="Refuser" onClick={() => deleteProfil(props.userId.student_id)}>
                   Refuser
                 </button>
-                <button className="validate" onClick={() => validateProfil(props.userId.student_id)}>
+                <button className="validate" title="Valider" onClick={() => validateProfil(props.userId.student_id)}>
                   Valider
                 </button>
               </div>

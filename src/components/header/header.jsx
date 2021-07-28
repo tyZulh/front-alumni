@@ -73,7 +73,7 @@ export default function header() {
     <>
       <div className="header">
         <div className="logo-box">
-          <a src="https://assocollegededroitassas.fr/">
+          <a href="https://assocollegededroitassas.fr/" target="_blank" rel="noreferrer">
             <img className="logo-header" src={Logo} alt="logo" />
           </a>
         </div>
