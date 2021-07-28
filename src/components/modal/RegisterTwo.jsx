@@ -38,6 +38,14 @@ function Registertwo(props) {
     props.picture(picture);
     const cv = new FormData(refCv.current);
     props.cv(cv);
+    setPhone('');
+    setLinkedin('');
+    setJob('');
+    setCompany('');
+    setMasterDegree('');
+    setBio('');
+    setPrivateInfo(0);
+    setSourcePicture(null);
   };
 
   const handleCancel = () => {
@@ -59,7 +67,6 @@ function Registertwo(props) {
   const changeHandler = () => {
     setIsSelected(true);
   };
-
 
   const handleOk2 = () => {
     setIsModalVisible(false);
