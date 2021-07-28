@@ -7,6 +7,9 @@ import ModalLogin from '../ModalLogin/ModalLogin';
 import Modification from '../modalModification/Modification';
 import ModificationTwo from '../modalModification/ModificationTwo';
 import './header.css';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import jwt_decode from 'jwt-decode';
 
 export default function header() {
   const [openModal, setOpenModal] = useState(false);
@@ -22,7 +25,6 @@ export default function header() {
   const object3 = { ...infoModal1, ...infoModal2 };
 
   const [users, setUsers] = useState([]);
-  const item = localStorage.getItem('email');
 
   function ClearLocal() {
     window.localStorage.clear();
@@ -30,13 +32,13 @@ export default function header() {
   }
 
   useEffect(async () => {
-    const result = await axios.get('http://localhost:5006/users/' + item, {
-      headers: {
-        Authorization: 'bearer ' + localStorage.getItem('token'),
-      },
-    });
-    setUsers(result.data);
-    return result;
+    const token = localStorage.getItem('token');
+    const userId = jwt_decode(token).userInfo.userId;
+    if (userId) {
+      const result = await axios.get(`http://localhost:5006/users/id/${userId}`);
+      setUsers(result.data);
+      return result;
+    }
   }, []);
 
   useEffect(() => {
@@ -74,29 +76,39 @@ export default function header() {
           <img className="logo-header" src={Logo} alt="logo" />
         </div>
         <div className="connection-zone">
-          <div className="profil-box">
-            {users.map((user) => {
-              return (
-                <>
-                  <div div key={user.email} className="profil-connected" role="button" tabIndex={0} onClick={() => setOpenModalModif(true)}>
-                    <div className="profil-picture">{user.picture}</div>
-                    <div className="profil-name">{user.firstname}</div>
+          {users[0] && (
+            <div className="profil-box">
+              {users.map((user) => {
+                return (
+                  <div key={user.email}>
+                    <div className="profil-connected" role="button" tabIndex={0} onClick={() => setOpenModalModif(true)}>
+                      <ListItemAvatar>
+                        <Avatar alt="image" src={user.picture ? `data:image/jpeg;base64, ${user.picture}` : null} />
+                      </ListItemAvatar>
+                      <div className="profil-name">
+                        {user.firstname}
+                        {user.lastname}
+                      </div>
+                    </div>
                   </div>
-                </>
-              );
-            })}
-            <button className="disconnection" onClick={ClearLocal}>
-              Déconnexion
-            </button>
-          </div>
-          <div className="button-box">
-            <button className="headerBtn" onClick={() => setOpenModal(true)}>
-              Inscription
-            </button>
-            <button className="headerBtn" onClick={() => setOpenLogin(true)}>
-              Connexion
-            </button>
-          </div>
+                );
+              })}
+              <button className="disconnection" onClick={ClearLocal}>
+                Déconnexion
+              </button>
+            </div>
+          )}
+
+          {!users[0] && (
+            <div className="button-box">
+              <button className="headerBtn" onClick={() => setOpenModal(true)}>
+                Inscription
+              </button>
+              <button className="headerBtn" onClick={() => setOpenLogin(true)}>
+                Connexion
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <Register
