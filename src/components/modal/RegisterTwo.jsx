@@ -38,6 +38,14 @@ function Registertwo(props) {
     props.picture(picture);
     const cv = new FormData(refCv.current);
     props.cv(cv);
+    setPhone('');
+    setLinkedin('');
+    setJob('');
+    setCompany('');
+    setMasterDegree('');
+    setBio('');
+    setPrivateInfo(0);
+    setSourcePicture(null);
   };
 
   const handleCancel = () => {
@@ -60,10 +68,6 @@ function Registertwo(props) {
     setIsSelected(true);
   };
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
   const handleOk2 = () => {
     setIsModalVisible(false);
     document.location.reload();
@@ -71,7 +75,7 @@ function Registertwo(props) {
 
   return (
     <>
-      <Modal title="Inscription" visible={props.openModalTwo} onOk={(handleOk, showModal)} onCancel={handleCancel}>
+      <Modal title="Inscription" visible={props.openModalTwo} onOk={handleOk} onCancel={handleCancel}>
         <div className="modal-two">
           <label htmlFor="files" id="lab-picture" style={{ backgroundImage: `url(${sourcePicture})` }}>
             {sourcePicture ? null : (
