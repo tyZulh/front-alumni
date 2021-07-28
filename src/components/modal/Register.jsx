@@ -12,16 +12,17 @@ function Register(props) {
   const [jobList, setJobList] = useState([]);
   const [firstname, setFirstName] = useState('');
   const [admin, setAdmin] = useState(0);
-  const [validate, setValidate] = useState(1);
-  const [lastname, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [validate, setValidate] = useState(0);
+  const [lastname, setLastName] = useState('ok');
+  const [email, setEmail] = useState('ok');
+  const [password, setPassword] = useState('ok');
+  const [confirmPassword, setConfirmPassword] = useState('ok');
   const [idSchool1, setIdSchool1] = useState('');
   const [idSchool2, setIdSchool2] = useState('');
   const [job_categorie_id, setJobCategorieId] = useState('');
   const [year1, setyear1] = useState('');
   const [year2, setyear2] = useState('');
+  const [errorMessage, setErrorMessage] = useState();
 
   useEffect(() => {
     axios.get('http://localhost:5006/users/job').then((res) => {
@@ -43,16 +44,23 @@ function Register(props) {
     year2,
   };
 
-  const handleOk = () => {
-    if (firstname && lastname && email && password && confirmPassword && idSchool1 && job_categorie_id && year1 && password === confirmPassword) {
-      props.info(info);
-      props.close(false);
-      props.next(true);
-      let confirmOK = document.querySelector('confirm');
-      confirmOK.style.display = 'none';
-    } else {
-      let confirm = document.querySelector('confirm');
-      confirm.style.display = 'block';
+  const handleOk = async () => {
+    try {
+      await axios.get(`http://localhost:5006/users/check/${email}`);
+      if (firstname && lastname && email && password && confirmPassword && idSchool1 && job_categorie_id && year1 && password === confirmPassword) {
+        props.info(info);
+        props.close(false);
+        props.next(true);
+        let confirmOK = document.querySelector('.confirm');
+        confirmOK.style.display = 'none';
+      } else {
+        let confirm = document.querySelector('.confirm');
+        confirm.style.display = 'block';
+      }
+    } catch (e) {
+      if (e.response.status === 400) {
+        setErrorMessage(`L'adresse email est déjà associée à un utilisateur *`);
+      }
     }
   };
 
@@ -167,6 +175,7 @@ function Register(props) {
         </Select>
         <div>
           <p className="confirm"> Veuillez remplir tous les champs *</p>
+          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </div>
       </Modal>
     </>

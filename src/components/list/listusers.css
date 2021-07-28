@@ -6,6 +6,14 @@
     font-size: 14px !important;
 }
 
+#delete-button {
+    background-color: red;
+    color:white;
+}
+
+#delete-button:hover {
+   opacity: 0.5;
+}
 #schoolid {
     margin-right: 7px;
 }
