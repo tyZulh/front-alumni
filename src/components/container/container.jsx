@@ -18,6 +18,7 @@ export default function ContainerBlock() {
   const [school, setSchool] = useState([]);
   const [waitingUser, setWaitingUser] = useState([]);
 
+  console.log(filterArray);
   const validateUser = (id) => {
     const user = waitingUser.filter((item) => item.student_id === id);
     user[0].validate = 1;
@@ -77,12 +78,19 @@ export default function ContainerBlock() {
 
   const filterSchool = (b = filterArray) => {
     let resultSchool = [];
-
+    console.log('b', b);
     school.forEach((elem) => {
-      const tempResultSchool = b.filter((item) => item.promo.includes(elem));
+      const tempResultSchool = b.filter((item) => item.schools.some((schoolItem) => schoolItem.title === elem));
       resultSchool = [...resultSchool, ...tempResultSchool];
     });
-    return resultSchool;
+    const arr = [];
+
+    for (let i = 0; resultSchool.length > i; i++) {
+      if (!arr.some((item) => item.student_id === resultSchool[i].student_id)) {
+        arr.push(resultSchool[i]);
+      }
+    }
+    return arr;
   };
 
   const filterJob = (b = filterArray) => {
@@ -98,7 +106,7 @@ export default function ContainerBlock() {
     if (years) {
       return filterArray
         .filter((users) => users.firstname.toLowerCase().includes(userRecherche) || users.lastname.toLowerCase().includes(userRecherche))
-        .filter((an) => an.annee == years);
+        .filter((an) => an.schools.year_of_promotion == years);
     } else {
       return filterArray.filter(
         (users) => users.firstname.toLowerCase().includes(userRecherche) || users.lastname.toLowerCase().includes(userRecherche),
