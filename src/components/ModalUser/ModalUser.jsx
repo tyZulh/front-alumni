@@ -121,6 +121,16 @@ function ModalUser(props) {
                     <p className="phone">{props.userId.phone}</p>
                   </>
                 )}
+                {props.userId.validate === 0 && (
+                  <>
+                    <button onClick={() => deleteProfil(props.userId.student_id)} style={{ backgroundColor: 'red' }}>
+                      X
+                    </button>
+                    <button onClick={() => validateProfil(props.userId.student_id)} style={{ backgroundColor: 'green' }}>
+                      V
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           </>
