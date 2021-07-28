@@ -10,14 +10,15 @@
 
 #small-container-block {
     width: 70%;
-    height: 80%;
+    height: 90%;
     background-color: #7E232F;
     justify-content: center;
     position: absolute;
-    top: 9vh;
+    top: 6vh;
     padding-top: 2%;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     border-radius: 0.5%;
+    z-index: 999;
 }
 
 #filter-search {
@@ -51,13 +52,32 @@ overflow-y:scroll;
 
 
 @media (max-width: 576px) { 
+    #big-container-block{
+        width: 100vw;
+    background-color: #fafafa;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+ }
+    
+    
     #small-container-block{
-        position:initial;
-        width: 100%;
+        position:relative;
+        width: 80%;
+        height: 30px;
         margin-top: 2px;
-        top: 6vh;
+        top: 9vh;
         padding: 1%;
+        margin-bottom: 20px;
     }
+
+    #container-filtre{
+        width:80%;
+        height: 60%;
+    }
+
 }
 
 @media (max-width: 767px) { 
