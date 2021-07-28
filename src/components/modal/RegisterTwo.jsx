@@ -60,9 +60,6 @@ function Registertwo(props) {
     setIsSelected(true);
   };
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
 
   const handleOk2 = () => {
     setIsModalVisible(false);
@@ -71,7 +68,7 @@ function Registertwo(props) {
 
   return (
     <>
-      <Modal title="Inscription" visible={props.openModalTwo} onOk={(handleOk, showModal)} onCancel={handleCancel}>
+      <Modal title="Inscription" visible={props.openModalTwo} onOk={handleOk} onCancel={handleCancel}>
         <div className="modal-two">
           <label htmlFor="files" id="lab-picture" style={{ backgroundImage: `url(${sourcePicture})` }}>
             {sourcePicture ? null : (
