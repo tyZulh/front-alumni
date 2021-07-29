@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Modal } from 'antd';
-import { Input } from 'antd';
+import { Modal, Input, DatePicker, Space, Select } from 'antd';
 import { UserOutlined, MailOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
-import { Select } from 'antd';
-import { DatePicker, Space } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
 
@@ -24,6 +21,7 @@ function Register(props) {
   const [year1, setyear1] = useState();
   const [year2, setyear2] = useState();
   const [errorMessage, setErrorMessage] = useState();
+  const [invalidEmail, setInvalidEmail] = useState(false);
 
   useEffect(() => {
     axios.get('http://localhost:5006/users/job').then((res) => {
@@ -45,33 +43,47 @@ function Register(props) {
     year2,
   };
 
+  const ValidateEmail = (mail) => {
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail)) {
+      setInvalidEmail(true);
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const handleOk = async () => {
-    try {
-      await axios.get(`http://localhost:5006/users/check/${email}`);
-      if (firstname && lastname && email && password && confirmPassword && idSchool1 && job_categorie_id && year1 && password === confirmPassword) {
-        props.info(info);
-        props.close(false);
-        props.next(true);
-        let confirmOK = document.querySelector('.confirm');
-        confirmOK.style.display = 'none';
-        setFirstName('');
-        setLastName('ok');
-        setEmail('');
-        setPassword('ok');
-        setConfirmPassword('ok');
-        setIdSchool1();
-        setIdSchool2();
-        setJobCategorieId();
-        setyear1('');
-        setyear2('');
-      } else {
-        let confirm = document.querySelector('.confirm');
-        confirm.style.display = 'block';
+    if (ValidateEmail(email)) {
+      setInvalidEmail(false);
+      try {
+        await axios.get(`http://localhost:5006/users/check/${email}`);
+        if (firstname && lastname && email && password && confirmPassword && idSchool1 && job_categorie_id && year1 && password === confirmPassword) {
+          props.info(info);
+          props.close(false);
+          props.next(true);
+          let confirmOK = document.querySelector('.confirm');
+          confirmOK.style.display = 'none';
+          setFirstName('');
+          setLastName('ok');
+          setEmail('');
+          setPassword('ok');
+          setConfirmPassword('ok');
+          setIdSchool1();
+          setIdSchool2();
+          setJobCategorieId();
+          setyear1('');
+          setyear2('');
+        } else {
+          let confirm = document.querySelector('.confirm');
+          confirm.style.display = 'block';
+        }
+      } catch (e) {
+        if (e.response.status === 400) {
+          setErrorMessage(`L'adresse email est déjà associée à un utilisateur *`);
+        }
       }
-    } catch (e) {
-      if (e.response.status === 400) {
-        setErrorMessage(`L'adresse email est déjà associée à un utilisateur *`);
-      }
+    } else {
+      setInvalidEmail(true);
     }
   };
 
@@ -199,6 +211,7 @@ function Register(props) {
         <div>
           <p className="confirm"> Veuillez remplir tous les champs *</p>
           {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+          {invalidEmail && <p style={{ color: 'red' }}>Votre email est incorrect *</p>}
         </div>
       </Modal>
     </>

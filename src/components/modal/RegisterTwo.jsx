@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Input, Checkbox, Modal, Button, notification } from 'antd';
+import { Input, Checkbox, Modal, notification } from 'antd';
 import { UserOutlined, LinkedinOutlined, PhoneOutlined } from '@ant-design/icons';
 
 import './RegisterTwo.css';
@@ -88,7 +88,10 @@ function Registertwo(props) {
     <>
       <Modal title="Inscription" visible={props.openModalTwo} onOk={handleOk} onCancel={handleCancel}>
         <div className="modal-two">
-          <label htmlFor="files" id="lab-picture" style={{ backgroundImage: `url(${sourcePicture})` }}>
+          <label
+            htmlFor="files"
+            id="lab-picture"
+            style={{ backgroundImage: `url(${sourcePicture})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
             {sourcePicture ? null : (
               <p style={{ display: 'flex', flexDirection: 'column' }}>
                 <span id="picture-span">+</span>Votre photo

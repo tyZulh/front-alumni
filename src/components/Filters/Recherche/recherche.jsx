@@ -3,8 +3,8 @@ import { Input, Space } from 'antd';
 import './recherche.css';
 
 const { Search } = Input;
+
 export default function Recherche(props) {
-  const [value, setValue] = React.useState('');
   return (
     <div className="box-search">
       <Space style={{ width: '60%', margin: 'auto' }} direction="vertical">
@@ -13,10 +13,9 @@ export default function Recherche(props) {
           allowClear
           enterButton
           size="medium"
-          value={value}
+          value={props.userResearch}
           onChange={(e) => {
-            props.recupSearchValue(e.target.value.toLowerCase());
-            setValue(e.target.value);
+            props.handleResearch(e.target.value);
           }}
         />
       </Space>

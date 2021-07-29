@@ -23,7 +23,6 @@ export default function header() {
   const [cv, setCv] = useState();
 
   const object3 = { ...infoModal1, ...infoModal2 };
-
   const [users, setUsers] = useState([]);
 
   function ClearLocal() {
@@ -66,6 +65,8 @@ export default function header() {
         }
       };
       postData();
+      setInfoModal1();
+      setInfoModal2();
     }
   }, [infoModal2, infoModal1]);
 
