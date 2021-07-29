@@ -15,9 +15,6 @@ function Proannee(props) {
     setJobData(x);
   }, []);
 
-  const handleChange = (value) => {
-    props.professionArray(value);
-  };
   return (
     <div style={{ width: '80%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       {jobData && (
@@ -25,9 +22,10 @@ function Proannee(props) {
           className="profession"
           style={{ width: '80%', margin: 'auto' }}
           mode="multiple"
+          value={props.job}
           placeholder="Sélectionner votre profession"
           options={jobData}
-          onChange={handleChange}
+          onChange={(e) => props.handleJob(e)}
         />
       )}
     </div>
