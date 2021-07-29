@@ -45,13 +45,29 @@
  }
 
 #container-filtre{
-margin: 0 10px 0 10px;
-height: 85%;
-overflow-y:scroll;
+    margin: 0 10px 0 10px;
+    height: 85%;
+    overflow-y:scroll;
+}
+
+#reset{
+    width: 50px;
+    height: 1%;
+    color: #7E232F;
+    margin-right: 3%;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 20%;
+}
+
+#reset:hover{
+    background-color:#7E232F ;
+    color: white;
 }
 
 @media (max-width: 576px) { 
-    #big-container-block{
+#big-container-block{
     width: 100vw;
     background-color: #fafafa;
     height: 1000px ;
@@ -61,46 +77,58 @@ overflow-y:scroll;
     margin-bottom: 85px;
     }
     
-     #small-container-block{
-        position:relative;
-        width: 80%;
-        height: 33%;
-        margin-top: 20px;
-        top: 0vh;
-        padding: 1%;
-        margin-bottom: 0;
+#small-container-block{
+    position:relative;
+     width: 80%;
+    height: 33%;
+     margin-top: 20px;
+    top: 0vh;
+    padding: 1%;
+    margin-bottom: 0;
     }
 
-    #container-filtre{
-        width:85%;
-        height: 60%;
-        align-items: center;
-        justify-content: center;
+#container-filtre{
+    width:85%;
+    height: 60%;
+    align-items: center;
+    justify-content: center;
     }
 
-    #filter-div2 {
-        margin: 2px, 0,2px, 0;
+#filter-div2 {
+     margin: 2px, 0,2px, 0;
     }
 }
 
 @media (max-width: 767px) { 
-    #small-container-block{
-        position: relative;
-        width: 100%;
-        margin-top: 30px;
+#small-container-block{
+     position: relative;
+     width: 100%;
+     margin-top: 30px;
+    
     }
-    #container-filtre{
-        width: 90%;
+
+#container-filtre{
+     width: 98%;
+     height: 60%;
+     
     }
+
+#big-container-block{
+    width: 100%;
+    position: relative;
+    margin-bottom: 0;
+
+}
 }
  
 @media (max-width: 992px) {
-    #filter-div2 {
-        display: flex;
-        flex-direction: column;
+#filter-div2 {
+    display: flex;
+    flex-direction: column;
     }
-    #small-container-block {
-        height: 708px;
+
+#small-container-block {
+    height: 708px;
     }
 }
 

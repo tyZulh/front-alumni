@@ -128,7 +128,11 @@ export default function ContainerBlock() {
         <div>
           <div style={{ display: 'flex' }}>
             <Recherche handleResearch={handleSearch} userResearch={userRecherche} />
-            {(job.length > 0 || school.length > 0 || years || userRecherche.length > 0) && <button onClick={Reset}>X</button>}
+            {(job.length > 0 || school.length > 0 || years || userRecherche.length > 0) && (
+              <button id="reset" onClick={Reset}>
+                X
+              </button>
+            )}
           </div>
           <div id="filter-div2">
             <Profession handleJob={setjob} job={job} />
