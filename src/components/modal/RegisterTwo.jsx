@@ -14,6 +14,7 @@ function Registertwo(props) {
   const [privateInfo, setPrivateInfo] = useState(0);
   const [sourcePicture, setSourcePicture] = useState(null);
   const [isSelected, setIsSelected] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const refPicture = useRef();
   const refCv = useRef();
@@ -83,7 +84,6 @@ function Registertwo(props) {
   const changeHandler = () => {
     setIsSelected(true);
   };
-
 
   const handleOk2 = () => {
     setIsModalVisible(false);
@@ -166,7 +166,6 @@ function Registertwo(props) {
           prochainement.
         </p>
       </Modal>
-
     </>
   );
 }
