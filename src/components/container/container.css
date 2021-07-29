@@ -50,32 +50,37 @@ height: 85%;
 overflow-y:scroll;
 }
 
-
 @media (max-width: 576px) { 
     #big-container-block{
-        width: 100vw;
+    width: 100vw;
     background-color: #fafafa;
-    height: 50px;
+    height: 1000px ;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 85px;
     }
     
-    #small-container-block{
+     #small-container-block{
         position:relative;
         width: 80%;
-        height: 30px;
-        margin-top: 2px;
-        top: 9vh;
+        height: 33%;
+        margin-top: 20px;
+        top: 0vh;
         padding: 1%;
-        margin-bottom: 20px;
+        margin-bottom: 0;
     }
 
     #container-filtre{
-        width:80%;
+        width:85%;
         height: 60%;
+        align-items: center;
+        justify-content: center;
     }
 
+    #filter-div2 {
+        margin: 2px, 0,2px, 0;
+    }
 }
 
 @media (max-width: 767px) { 
