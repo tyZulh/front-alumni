@@ -6,13 +6,14 @@ import School from '../Filters/School/school';
 import Anneeyears from '../Filters/Annee/annee';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
+import moment from 'moment';
 
 import './container.css';
 
 export default function ContainerBlock() {
   const [dataUsers, setdataUsersUsers] = useState([]);
   const [filterArray, setFilterArray] = useState([]);
-  const [userRecherche, setUserRecherche] = useState([]);
+  const [userRecherche, setUserRecherche] = useState('');
   const [job, setjob] = useState([]);
   const [years, setYears] = useState();
   const [school, setSchool] = useState([]);
@@ -75,16 +76,6 @@ export default function ContainerBlock() {
     setFilterArray(filteredUsers);
   };
 
-  const filterSchool = (b = filterArray) => {
-    let resultSchool = [];
-
-    school.forEach((elem) => {
-      const tempResultSchool = b.filter((item) => item.promo.includes(elem));
-      resultSchool = [...resultSchool, ...tempResultSchool];
-    });
-    return resultSchool;
-  };
-
   const filterJob = (b = filterArray) => {
     let result = [];
     job.forEach((elem) => {
@@ -94,26 +85,56 @@ export default function ContainerBlock() {
     return result;
   };
 
+  const filterSchool = (b = filterArray) => {
+    let resultSchool = [];
+    school.forEach((elem) => {
+      const tempResultSchool = b.filter((item) => item.schools.some((schoolItem) => schoolItem.title === elem));
+      resultSchool = [...resultSchool, ...tempResultSchool];
+    });
+    const arr = [];
+
+    for (let i = 0; resultSchool.length > i; i++) {
+      if (!arr.some((item) => item.student_id === resultSchool[i].student_id)) {
+        arr.push(resultSchool[i]);
+      }
+    }
+    return arr;
+  };
+
   const resultat = () => {
     if (years) {
       return filterArray
         .filter((users) => users.firstname.toLowerCase().includes(userRecherche) || users.lastname.toLowerCase().includes(userRecherche))
-        .filter((an) => an.annee == years);
+        .filter((an) => an.schools.some((item) => item.year_of_promotion == moment(years._d).format('YYYY')));
     } else {
       return filterArray.filter(
-        (users) => users.firstname.toLowerCase().includes(userRecherche) || users.lastname.toLowerCase().includes(userRecherche),
+        (users) => users.firstname.toLowerCase().includes(userRecherche) || users.lastname.toLowerCase().includes(userRecherche.toLocaleLowerCase()),
       );
     }
   };
+  const handleSearch = (value) => {
+    setUserRecherche(value);
+  };
 
+  const Reset = () => {
+    setUserRecherche('');
+    setjob([]);
+    setYears();
+    setSchool([]);
+  };
   return (
     <div id="big-container-block">
       <div id="small-container-block">
-        <Recherche recupSearchValue={(value) => setUserRecherche(value)} />
-        <div id="filter-div2">
-          <Profession professionArray={(value) => setjob(value)} />
-          <School schoolArray={(value) => setSchool(value)} />
-          <Anneeyears years={(value) => setYears(value)} />
+        <div>
+          <div style={{ display: 'flex' }}>
+            <Recherche handleResearch={handleSearch} userResearch={userRecherche} />
+            {(job.length > 0 || school.length > 0 || years || userRecherche.length > 0) && <button onClick={Reset}>X</button>}
+          </div>
+          <div id="filter-div2">
+            <Profession handleJob={setjob} job={job} />
+            <School handleSchool={setSchool} school={school} />
+            <Anneeyears handleYears={setYears} years={years} />
+          </div>
         </div>
         <div id="container-filtre">
           <ListUsers update={validateUser} supp={SuppUser} waitingUser={waitingUser} valueUser={resultat()} />

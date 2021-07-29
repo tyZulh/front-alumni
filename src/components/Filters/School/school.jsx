@@ -12,12 +12,16 @@ export default function School(props) {
       disabled: i === 10,
     });
   }
-  const handleChange = (value) => {
-    props.schoolArray(value);
-  };
   return (
     <div className="pro-annee-container" style={{ width: '80%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '5px' }}>
-      <Select mode="multiple" style={{ width: '80%' }} placeholder="Sélectionner votre école" options={options} onChange={handleChange} />
+      <Select
+        mode="multiple"
+        style={{ width: '80%' }}
+        placeholder="Sélectionner votre école"
+        options={options}
+        value={props.school}
+        onChange={(e) => props.handleSchool(e)}
+      />
     </div>
   );
 }

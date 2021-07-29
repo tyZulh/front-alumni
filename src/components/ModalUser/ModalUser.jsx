@@ -94,10 +94,11 @@ function ModalUser(props) {
                 </>
               ) : null}
               <p className="bio">{UpperCase(props.userId.bio)}</p>
-
-              <a href={`data:application/pdf;base64, ${props.userId.cv}`} download={`CV-${props.userId.firstname}-${props.userId.lastname}`}>
-                <button className="btn-download">Télécharger mon CV</button>
-              </a>
+              {props.userId.cv && (
+                <a href={`data:application/pdf;base64, ${props.userId.cv}`} download={`CV-${props.userId.firstname}-${props.userId.lastname}`}>
+                  <button className="btn-download">Télécharger mon CV</button>
+                </a>
+              )}
               <div className="line"></div>
               <h3 className="contact-title">CONTACT</h3>
             </div>
