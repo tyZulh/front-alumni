@@ -130,6 +130,23 @@
 #small-container-block {
     height: 708px;
     }
+    #filter-div2 {
+
+        margin: 6px auto 15px auto;
+     }
 }
 
 @media (max-width: 1200px) { }
+
+#small-container-block .box-search {
+    width:80%;
+    margin:0;
+}
+
+#small-container-block .ant-space-item {
+    width:100%
+}
+
+#small-container-block .ant-space-vertical {
+    width:80% !important;
+}

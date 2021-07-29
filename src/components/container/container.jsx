@@ -126,7 +126,7 @@ export default function ContainerBlock() {
     <div id="big-container-block">
       <div id="small-container-block">
         <div>
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Recherche handleResearch={handleSearch} userResearch={userRecherche} />
             {(job.length > 0 || school.length > 0 || years || userRecherche.length > 0) && (
               <button id="reset" onClick={Reset}>
