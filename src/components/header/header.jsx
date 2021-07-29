@@ -87,10 +87,7 @@ export default function header() {
                       <ListItemAvatar>
                         <Avatar alt="image" src={user.picture ? `data:image/jpeg;base64, ${user.picture}` : null} />
                       </ListItemAvatar>
-                      <div className="profil-name">
-                        {user.firstname}
-                        {user.lastname}
-                      </div>
+                      <div className="profil-name">{`${user.firstname} ${user.lastname}`}</div>
                     </div>
                   </div>
                 );

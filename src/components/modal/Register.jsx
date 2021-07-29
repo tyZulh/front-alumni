@@ -5,6 +5,7 @@ import { UserOutlined, MailOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@a
 import { Select } from 'antd';
 import { DatePicker, Space } from 'antd';
 import axios from 'axios';
+import moment from 'moment';
 
 import './Register.css';
 
@@ -17,11 +18,11 @@ function Register(props) {
   const [email, setEmail] = useState('ok');
   const [password, setPassword] = useState('ok');
   const [confirmPassword, setConfirmPassword] = useState('ok');
-  const [idSchool1, setIdSchool1] = useState('');
-  const [idSchool2, setIdSchool2] = useState('');
-  const [job_categorie_id, setJobCategorieId] = useState('');
-  const [year1, setyear1] = useState('');
-  const [year2, setyear2] = useState('');
+  const [idSchool1, setIdSchool1] = useState();
+  const [idSchool2, setIdSchool2] = useState();
+  const [job_categorie_id, setJobCategorieId] = useState();
+  const [year1, setyear1] = useState();
+  const [year2, setyear2] = useState();
   const [errorMessage, setErrorMessage] = useState();
 
   useEffect(() => {
@@ -53,6 +54,16 @@ function Register(props) {
         props.next(true);
         let confirmOK = document.querySelector('.confirm');
         confirmOK.style.display = 'none';
+        setFirstName('');
+        setLastName('ok');
+        setEmail('');
+        setPassword('ok');
+        setConfirmPassword('ok');
+        setIdSchool1();
+        setIdSchool2();
+        setJobCategorieId();
+        setyear1('');
+        setyear2('');
       } else {
         let confirm = document.querySelector('.confirm');
         confirm.style.display = 'block';
@@ -144,26 +155,38 @@ function Register(props) {
         <div className="date-job-box">
           <p className="cursus">Votre cursus au Collège et à l&apos;Ecole de droit :</p>
           <div className="dateJob">
-            <Select style={{ width: '50%' }} placeholder="Sélectionner votre cursus *" onChange={handleChange}>
-              <Option value="1">College de droit</Option>
-              <Option value="2">Ecole de droit</Option>
+            <Select style={{ width: '50%' }} value={idSchool1} placeholder="Sélectionner votre cursus *" onChange={handleChange}>
+              <Option value={1}>Collège de droit</Option>
+              <Option value={2}>Ecole de droit</Option>
             </Select>
             <Space direction="vertical">
-              <DatePicker placeholder="Année de diplôme *" onChange={onChange} picker="year" />
+              <DatePicker
+                style={{ width: '120%' }}
+                value={year1 ? moment(year1, 'YYYY') : null}
+                placeholder="Année de diplôme *"
+                onChange={onChange}
+                picker="year"
+              />
             </Space>
           </div>
           <div className="dateJob2">
-            <Select style={{ width: '50%' }} placeholder="Sélectionner votre cursus" onChange={handleChangeTwo}>
-              <Option value="1">College de droit</Option>
-              <Option value="2">Ecole de droit</Option>
+            <Select style={{ width: '50%' }} value={idSchool2} placeholder="Sélectionner votre cursus" onChange={handleChangeTwo}>
+              <Option value={1}>Collège de droit</Option>
+              <Option value={2}>Ecole de droit</Option>
               <Option value=""></Option>
             </Select>
             <Space direction="vertical">
-              <DatePicker placeholder="Année de diplôme" onChange={onChangeTwo} picker="year" />
+              <DatePicker
+                style={{ width: '120%' }}
+                value={year2 ? moment(year2, 'YYYY') : null}
+                placeholder="Année de diplôme"
+                onChange={onChangeTwo}
+                picker="year"
+              />
             </Space>
           </div>
         </div>
-        <Select style={{ width: '100%' }} defaultValue="Profession actuelle" onChange={prof}>
+        <Select id="my-select" style={{ width: '100%' }} value={job_categorie_id} placeholder="Profession actuelle" onChange={prof}>
           {jobList.length &&
             jobList.map((job) => {
               return (

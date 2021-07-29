@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Input, Checkbox, Modal } from 'antd';
+import { Input, Checkbox, Modal, Button, notification } from 'antd';
 import { UserOutlined, LinkedinOutlined, PhoneOutlined } from '@ant-design/icons';
 
 import './RegisterTwo.css';
@@ -14,7 +14,6 @@ function Registertwo(props) {
   const [privateInfo, setPrivateInfo] = useState(0);
   const [sourcePicture, setSourcePicture] = useState(null);
   const [isSelected, setIsSelected] = useState(false);
-  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const refPicture = useRef();
   const refCv = useRef();
@@ -30,6 +29,22 @@ function Registertwo(props) {
     masterDegree,
     privateInfo,
   };
+  const key = 'updatable';
+
+  const openNotification = () => {
+    notification.open({
+      key,
+      message: 'Inscription terminé',
+      description: 'En attente de validation par un administrateur',
+    });
+    setTimeout(() => {
+      notification.open({
+        key,
+        message: 'Inscription terminé',
+        description: 'En attente de validation par un administrateur',
+      });
+    }, 1000);
+  };
 
   const handleOk = () => {
     props.close(false);
@@ -38,6 +53,15 @@ function Registertwo(props) {
     props.picture(picture);
     const cv = new FormData(refCv.current);
     props.cv(cv);
+    openNotification();
+    setPhone('');
+    setLinkedin('');
+    setJob('');
+    setCompany('');
+    setMasterDegree('');
+    setBio('');
+    setPrivateInfo(0);
+    setSourcePicture(null);
   };
 
   const handleCancel = () => {
@@ -59,6 +83,7 @@ function Registertwo(props) {
   const changeHandler = () => {
     setIsSelected(true);
   };
+
 
   const handleOk2 = () => {
     setIsModalVisible(false);
@@ -134,12 +159,14 @@ function Registertwo(props) {
         <Checkbox onChange={onChange}>Privé*</Checkbox>
         <p className="private">*En mode privé, votre profil ne pourra être consulté que par les anciens diplômés inscrits dans l’annuaire.</p>
       </Modal>
+
       <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk2}>
         <p>
           Votre inscription dans l’annuaire a bien été prise en compte. <br /> – Votre profil est en cours de validation et sera accessible
           prochainement.
         </p>
       </Modal>
+
     </>
   );
 }

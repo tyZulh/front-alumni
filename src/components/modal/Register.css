@@ -17,8 +17,10 @@
  .modal-register .dateJob {
   display: flex;
   align-items: center;
-  flex-direction: row;
-  width:100%;
+  justify-content: space-around;
+ flex-direction: row;
+  width: 100%;
+  margin-bottom: 8px;
 }
 
 .modal-register .dateJob2 {
@@ -26,12 +28,15 @@
   align-items: center;
   flex-direction: row;
   width: 100%;
+  margin-bottom: 12px;
 }
 
 .confirm{
   color: red;
   display: none;
-  font-size: 8px;
+  font-size: 15px;
+  margin-bottom: 0;
+  margin-top: 15px;
 }
 
 .star-box {
