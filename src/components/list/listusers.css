@@ -1,20 +1,20 @@
 .school-tag {
-    background-color: #7b1420d4;
+    background-color: rgb(95, 91, 91);
     color: white;
     border-radius: 15px;
-    padding: 4px 7px;
-    font-size: 14px !important;
+    padding: 4.5px 7.5px;
+    font-size: 16px !important;
 }
 
 #delete-button {
-    background-color: #7b1420d4;
+    background-color: #a30f20d4;
     color: white;
     border-radius: 20px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
     border : 1px solid #7b1420d4;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 
 #delete-button:hover {
@@ -23,15 +23,14 @@ color: #7b1420d4 ;
 
 }
 
-
 .waiting{
     background: grey;
      color: white;
       border-Radius: 10px;
       padding: 1px 4px 1px 4px;
       font-weight: bold;
-      
 }
+
 #schoolid {
     margin-right: 7px;
 }
@@ -52,7 +51,13 @@ color: #7b1420d4 ;
     flex-direction: row;
 }
 
-
+.cancel-box{
+    height: 82px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
 
 @media (max-width: 1200px) {
     .job-tag{

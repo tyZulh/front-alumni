@@ -125,6 +125,7 @@ function Registertwo(props) {
           </div>
         </form>
         <TextArea
+          className="description-box"
           rows={4}
           placeholder="Présentez en quelques mots vos parcours universitaire et professionnel"
           value={bio}
@@ -135,7 +136,7 @@ function Registertwo(props) {
       </Modal>
       <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk2}>
         <p>
-          Votre inscription dans l’annuaire a bien été prise en compte. <br /> – votre profil est en cours de validation et sera accessible
+          Votre inscription dans l’annuaire a bien été prise en compte. <br /> – Votre profil est en cours de validation et sera accessible
           prochainement.
         </p>
       </Modal>

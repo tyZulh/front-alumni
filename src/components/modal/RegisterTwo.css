@@ -11,3 +11,23 @@
   font-size: 9px ;
 
 }
+
+.description-box {
+  margin-top: 4px;
+}
+
+#lab-picture {
+  width: 100px;
+  height: 100px;
+  background-repeat:none;
+  display: flex;
+  justify-content: center;
+  align-content:center;
+  background-size: 100%;
+  cursor: pointer;
+  border: grey dotted 1px;
+}
+
+#lab-picture:hover {
+  border: #862628 dotted 2px;
+}

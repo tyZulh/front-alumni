@@ -142,14 +142,14 @@ function Register(props) {
         />
 
         <div className="date-job-box">
-          <p>Votre cursus au Collège et à l&apos;Ecole de droit :</p>
+          <p className="cursus">Votre cursus au Collège et à l&apos;Ecole de droit :</p>
           <div className="dateJob">
             <Select style={{ width: '50%' }} placeholder="Sélectionner votre cursus *" onChange={handleChange}>
               <Option value="1">College de droit</Option>
               <Option value="2">Ecole de droit</Option>
             </Select>
             <Space direction="vertical">
-              <DatePicker style={{ width: '120%' }} placeholder="Année de diplôme *" onChange={onChange} picker="year" />
+              <DatePicker placeholder="Année de diplôme *" onChange={onChange} picker="year" />
             </Space>
           </div>
           <div className="dateJob2">
@@ -159,7 +159,7 @@ function Register(props) {
               <Option value=""></Option>
             </Select>
             <Space direction="vertical">
-              <DatePicker style={{ width: '120%' }} placeholder="Année de diplôme" onChange={onChangeTwo} picker="year" />
+              <DatePicker placeholder="Année de diplôme" onChange={onChangeTwo} picker="year" />
             </Space>
           </div>
         </div>
