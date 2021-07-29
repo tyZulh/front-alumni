@@ -84,6 +84,12 @@ function Registertwo(props) {
     setIsSelected(true);
   };
 
+
+  const handleOk2 = () => {
+    setIsModalVisible(false);
+    document.location.reload();
+  };
+
   return (
     <>
       <Modal title="Inscription" visible={props.openModalTwo} onOk={handleOk} onCancel={handleCancel}>
@@ -144,13 +150,23 @@ function Registertwo(props) {
           </div>
         </form>
         <TextArea
+          className="description-box"
           rows={4}
           placeholder="Présentez en quelques mots vos parcours universitaire et professionnel"
           value={bio}
           onChange={(e) => setBio(e.target.value)}
         />
-        <Checkbox onChange={onChange}>Privé</Checkbox>
+        <Checkbox onChange={onChange}>Privé*</Checkbox>
+        <p className="private">*En mode privé, votre profil ne pourra être consulté que par les anciens diplômés inscrits dans l’annuaire.</p>
       </Modal>
+
+      <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk2}>
+        <p>
+          Votre inscription dans l’annuaire a bien été prise en compte. <br /> – Votre profil est en cours de validation et sera accessible
+          prochainement.
+        </p>
+      </Modal>
+
     </>
   );
 }

@@ -36,6 +36,7 @@ export default function ListUsers(props) {
   const [showModal, setShowModal] = useState(false);
   const [userId, setUserId] = useState();
   const [admin, setAdmin] = useState();
+  const x = '-';
   useEffect(async () => {
     const item = {
       item: localStorage.getItem('email'),
@@ -98,22 +99,22 @@ export default function ListUsers(props) {
                         {item.schools.length === 2 ? (
                           <>
                             <Typography component="span" className="school-tag" id="schoolid">
-                              {`${item.schools[0].title} ${item.schools[0].year_of_promotion}`}
+                              {`${item.schools[0].title} ${x} ${item.schools[0].year_of_promotion}`}
                             </Typography>
                             <Typography component="span" className="school-tag">
-                              {`${item.schools[1].title} ${item.schools[1].year_of_promotion}`}
+                              {`${item.schools[1].title} ${x} ${item.schools[1].year_of_promotion}`}
                             </Typography>
                           </>
                         ) : (
                           <Typography className="school-tag" component="span">
-                            {`${item.schools[0].title} ${item.schools[0].year_of_promotion}`}{' '}
+                            {`${item.schools[0].title} ${x} ${item.schools[0].year_of_promotion}`}{' '}
                           </Typography>
                         )}
                       </React.Fragment>
                     </>
                   }
                 />
-                <p style={{ background: 'grey', color: 'white', borderRadius: '20px' }}>En attente</p>
+                <p className="waiting">En attente</p>
               </ListItem>
             );
           })}
@@ -144,15 +145,15 @@ export default function ListUsers(props) {
                           {item.schools.length === 2 ? (
                             <>
                               <Typography component="span" className="school-tag" id="schoolid">
-                                {`${item.schools[0].title} ${item.schools[0].year_of_promotion}`}
+                                {`${item.schools[0].title} ${x} ${item.schools[0].year_of_promotion}`}
                               </Typography>
                               <Typography component="span" className="school-tag">
-                                {`${item.schools[1].title} ${item.schools[1].year_of_promotion}`}
+                                {`${item.schools[1].title} ${x} ${item.schools[1].year_of_promotion}`}
                               </Typography>
                             </>
                           ) : (
                             <Typography className="school-tag" component="span">
-                              {`${item.schools[0].title} ${item.schools[0].year_of_promotion}`}{' '}
+                              {`${item.schools[0].title} ${x} ${item.schools[0].year_of_promotion}`}{' '}
                             </Typography>
                           )}
                         </React.Fragment>
@@ -161,9 +162,11 @@ export default function ListUsers(props) {
                   />
                 </div>
                 {item.validate === 1 && admin && (
-                  <button onClick={() => Delete(item.student_id)} id="delete-button">
-                    X
-                  </button>
+                  <div className="cancel-box">
+                    <button onClick={() => Delete(item.student_id)} id="delete-button" title="supprimer">
+                      X
+                    </button>
+                  </div>
                 )}
               </ListItem>
             );

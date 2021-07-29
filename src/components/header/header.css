@@ -28,21 +28,23 @@
 .logo-header {
     width: 160px ;
     height: auto;
-    margin-left: 36px;
+    
 }
 
 .logo-box{
+
+    margin-left: 3%;
+
     margin-top: 2px;
 }
 
 .button-box{
     display: flex;
-            flex-direction: row;
-           justify-content: center;
-            align-Items: center ;
-            
-            margin-top: 80px;
-            text-align: center;
+    flex-direction: row;
+    justify-content: center;
+    align-Items: center ;
+    margin-top: 80px;
+     text-align: center;
 }
 
 .profil-picture{
@@ -50,7 +52,6 @@
     width: 60px;
     height: auto;
 }
-
 
 .profil-connected{
     display: flex;
@@ -87,7 +88,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: 30px;
+    margin-right: 5%;
 }
 
 @media (max-width: 576px) { 

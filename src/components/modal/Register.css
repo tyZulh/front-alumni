@@ -14,7 +14,7 @@
   width: 100%;
 }
 
-.dateJob {
+ .modal-register .dateJob {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -23,10 +23,9 @@
   margin-bottom: 8px;
 }
 
-.dateJob2 {
+.modal-register .dateJob2 {
   display: flex;
   align-items: center;
-  justify-content: space-around;
   flex-direction: row;
   width: 100%;
   margin-bottom: 12px;
@@ -48,22 +47,6 @@
 #input-image {
 height:60px;
 width:60px;
-}
-
-#lab-picture {
-  width: 100px;
-  height: 100px;
-  background-repeat:none;
-  display: flex;
-  justify-content: center;
-  align-content:center;
-  background-size: 100%;
-  cursor: pointer;
-  border: grey dotted 1px;
-}
-
-#lab-picture:hover {
-  border: #862628 dotted 2px;
 }
 
 #picture-span {
@@ -88,14 +71,19 @@ width:60px;
 .ant-modal-footer .ant-btn:hover {
   border : 1px solid gray;
 }
+.modal-register .ant-space-vertical  {
+  width: 40%;
+  margin-left: 50px;
+}
 
-.date-job-box{
+.modal-register .date-job-box{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   align-items: flex-start;
    width: 100%;
+   margin-bottom: 10px;
 }
 
 .ant-select-customize-input{
@@ -114,4 +102,17 @@ width:60px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
+}
+
+.modal-register .ant-select-selector{
+  width: 50%;
+  margin: 8px 8px 8px 0 ;
+}
+
+.modal-register .ant-picker {
+  width:100%;
+}
+
+.cursus {
+  margin-bottom: 2px;
 }
