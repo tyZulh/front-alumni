@@ -4,3 +4,9 @@
     justify-content: center;
     align-items: center;
 }
+
+@media (max-width: 576px) { 
+     .profession {
+      width: 80% !important;
+    }
+  }

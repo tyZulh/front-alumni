@@ -2,6 +2,8 @@ import React from 'react';
 import { Select } from 'antd';
 const schoolList = ['Collège de droit', 'Ecole de droit'];
 
+import './School.css';
+
 export default function School(props) {
   const options = [];
 
