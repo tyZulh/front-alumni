@@ -2,6 +2,7 @@
 FROM node:14 as builder
 WORKDIR /usr/src/app
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
+ARG VITE_URL_API=${VITE_API_URL}
 COPY . /usr/src/app
 RUN npm install
 RUN npm run build

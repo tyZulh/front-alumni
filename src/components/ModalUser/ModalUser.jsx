@@ -45,13 +45,13 @@ function ModalUser(props) {
   };
 
   const validateProfil = async (id) => {
-    await axios.put(`http://localhost:5006/users/validate/${id}`);
+    await axios.put(`${import.meta.env.VITE_API_URL}/users/validate/${id}`);
     props.cancelModal(false);
     props.update(id);
   };
 
   const deleteProfil = async (id) => {
-    await axios.delete(`http://localhost:5006/users/${id}`);
+    await axios.delete(`${import.meta.env.VITE_API_URL}/users/${id}`);
     props.cancelModal(false);
     props.supp(id);
   };

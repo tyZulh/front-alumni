@@ -34,7 +34,7 @@ export default function header() {
     const token = localStorage.getItem('token');
     const userId = jwt_decode(token).userInfo.userId;
     if (userId) {
-      const result = await axios.get(`http://localhost:5006/users/id/${userId}`);
+      const result = await axios.get(`${import.meta.env.VITE_API_URL}/users/id/${userId}`);
       setUsers(result.data);
       return result;
     }
@@ -43,12 +43,12 @@ export default function header() {
   useEffect(() => {
     if (infoModal1 && infoModal2) {
       const postData = async () => {
-        const user = await axios.post('http://localhost:5006/users/', object3);
+        const user = await axios.post(`${import.meta.env.VITE_API_URL}/users/`, object3);
 
         if (picture.get('picture').name.length > 1) {
           const options = {
             method: 'POST',
-            url: `http://localhost:5006/users/${user.data.student_id}/picture`,
+            url: `${import.meta.env.VITE_API_URL}/users/${user.data.student_id}/picture`,
             data: picture,
             headers: { 'Content-Type': 'multipart/form-data' },
           };
@@ -57,7 +57,7 @@ export default function header() {
         if (cv.get('cv').name.length > 1) {
           const optionsCv = {
             method: 'POST',
-            url: `http://localhost:5006/users/${user.data.student_id}/cv`,
+            url: `${import.meta.env.VITE_API_URL}/users/${user.data.student_id}/cv`,
             data: cv,
             headers: { 'Content-Type': 'multipart/form-data' },
           };

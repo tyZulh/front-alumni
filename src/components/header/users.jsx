@@ -5,7 +5,7 @@ export default function Users() {
   const [users, setUsers] = useState([]);
   const item = localStorage.getItem('email');
   useEffect(async () => {
-    const result = await axios.get('http://localhost:5006/users/' + item, {
+    const result = await axios.get(`${import.meta.env.VITE_API_URL}/users/` + item, {
       headers: {
         Authorization: 'bearer ' + localStorage.getItem('token'),
       },

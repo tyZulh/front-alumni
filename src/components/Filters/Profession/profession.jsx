@@ -8,7 +8,7 @@ import './profession.css';
 function Proannee(props) {
   const [jobData, setJobData] = useState([]);
   useEffect(async () => {
-    const data = await axios.get('http://localhost:5006/users/job');
+    const data = await axios.get(`${import.meta.env.VITE_API_URL}/users/job`);
     const x = data.data.map((elem, i) => {
       return { value: elem.job, disabled: i === 10 };
     });

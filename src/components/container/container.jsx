@@ -39,20 +39,20 @@ export default function ContainerBlock() {
     if (token) {
       const decoded = jwt_decode(token).userInfo;
       if (decoded.admin === 1) {
-        const waiting = await axios.get('http://localhost:5006/users/admin', {
+        const waiting = await axios.get(`${import.meta.env.VITE_API_URL}/users/admin`, {
           headers: {
             Authorization: 'bearer ' + localStorage.getItem('token'),
           },
         });
         setWaitingUser(waiting.data);
       }
-      myData = await axios.get('http://localhost:5006/users/', {
+      myData = await axios.get(`${import.meta.env.VITE_API_URL}/users/`, {
         headers: {
           Authorization: 'bearer ' + localStorage.getItem('token'),
         },
       });
     } else {
-      myData = await axios.get('http://localhost:5006/users/');
+      myData = await axios.get(`${import.meta.env.VITE_API_URL}/users/`);
     }
     setdataUsersUsers(myData.data);
     setFilterArray(myData.data);

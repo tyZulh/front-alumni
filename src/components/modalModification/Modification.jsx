@@ -23,7 +23,7 @@ function Modification(props) {
   const [year2, setyear2] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5006/users/job').then((res) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/users/job`).then((res) => {
       setJobList(res.data);
     });
   }, []);

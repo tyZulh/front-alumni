@@ -24,7 +24,7 @@ function Register(props) {
   const [invalidEmail, setInvalidEmail] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:5006/users/job').then((res) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/users/job`).then((res) => {
       setJobList(res.data);
     });
   }, []);
@@ -56,7 +56,7 @@ function Register(props) {
     if (ValidateEmail(email)) {
       setInvalidEmail(false);
       try {
-        await axios.get(`http://localhost:5006/users/check/${email}`);
+        await axios.get(`${import.meta.env.VITE_API_URL}/users/check/${email}`);
         if (firstname && lastname && email && password && confirmPassword && idSchool1 && job_categorie_id && year1 && password === confirmPassword) {
           props.info(info);
           props.close(false);

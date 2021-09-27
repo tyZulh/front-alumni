@@ -43,7 +43,7 @@ export default function ListUsers(props) {
     };
 
     if (item.item) {
-      const profil = await axios.get(`http://localhost:5006/users/${item.item}`);
+      const profil = await axios.get(`${import.meta.env.VITE_API_URL}/users/${item.item}`);
       if (profil.data[0].admin === 1) {
         setAdmin(true);
       }
@@ -53,13 +53,13 @@ export default function ListUsers(props) {
   }, []);
 
   const showModale = async (id) => {
-    const user = await axios.get(`http://localhost:5006/users/id/${id}`);
+    const user = await axios.get(`${import.meta.env.VITE_API_URL}/users/id/${id}`);
     setUserId(user.data[0]);
     setShowModal(true);
   };
 
   const Delete = async (id) => {
-    await axios.delete(`http://localhost:5006/users/${id}`);
+    await axios.delete(`${import.meta.env.VITE_API_URL}/users/${id}`);
     props.supp(id);
   };
 
