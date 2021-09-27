@@ -6,6 +6,7 @@ import Footer from './components/footer/Footer';
 import './App.css';
 
 function App() {
+  console.log(import.meta.env.VITE_API_URL);
   return (
     <>
       <Header />
