@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Modal } from 'antd';
-import Login from '../Login/login';
+import Login from '../Login/Login';
 import axios from 'axios';
 import './ModalLogin.css';
 
