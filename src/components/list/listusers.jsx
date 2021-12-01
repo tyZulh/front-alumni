@@ -43,7 +43,7 @@ export default function ListUsers(props) {
     };
 
     if (item.item) {
-      const profil = await axios.get(`${import.meta.env.VITE_API_URL}/users/${item.item}`);
+      const profil = await axios.get(`${import.meta.env.VITE_API_URL}/auth/role/${item.item}`);
       if (profil.data[0].admin === 1) {
         setAdmin(true);
       }
@@ -54,7 +54,6 @@ export default function ListUsers(props) {
 
   const showModale = async (id) => {
     const user = await axios.get(`${import.meta.env.VITE_API_URL}/users/${id}`);
-    console.log(user);
     setUserId(user.data);
     setShowModal(true);
   };

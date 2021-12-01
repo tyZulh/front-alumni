@@ -37,9 +37,9 @@ export default function ContainerBlock() {
     let myData;
     const token = localStorage.getItem('token');
     if (token) {
-      const decoded = jwt_decode(token).userInfo;
+      const decoded = jwt_decode(token);
       if (decoded.admin === 1) {
-        const waiting = await axios.get(`${import.meta.env.VITE_API_URL}/users/admin`, {
+        const waiting = await axios.get(`${import.meta.env.VITE_API_URL}/users/`, {
           headers: {
             Authorization: 'bearer ' + localStorage.getItem('token'),
           },

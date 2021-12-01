@@ -22,7 +22,7 @@ export default function header() {
   const [picture, setPicture] = useState();
   const [cv, setCv] = useState();
 
-  const object3 = { ...infoModal1, ...infoModal2 };
+  // const object3 = { ...infoModal1, ...infoModal2, cv, picture };
   const [users, setUsers] = useState([]);
 
   function ClearLocal() {
@@ -32,13 +32,11 @@ export default function header() {
 
   useEffect(async () => {
     const token = localStorage.getItem('token');
-    console.log(token);
     if (token) {
-      const userId = jwt_decode(token).userInfo.userId;
-      console.log(userId);
+      const userId = jwt_decode(token).userId;
       if (userId) {
         const result = await axios.get(`${import.meta.env.VITE_API_URL}/users/${userId}`);
-        setUsers(result.data);
+        setUsers([result.data]);
         return result;
       }
     }
@@ -47,26 +45,31 @@ export default function header() {
   useEffect(() => {
     if (infoModal1 && infoModal2) {
       const postData = async () => {
-        const user = await axios.post(`${import.meta.env.VITE_API_URL}/users/`, object3);
+        const object3 = { ...infoModal1, ...infoModal2 };
+        console.log(cv, picture, object3);
+        const body = new FormData();
+        body.append(...object3);
 
-        if (picture.get('picture').name.length > 1) {
-          const options = {
-            method: 'POST',
-            url: `${import.meta.env.VITE_API_URL}/users/${user.data.student_id}/picture`,
-            data: picture,
-            headers: { 'Content-Type': 'multipart/form-data' },
-          };
-          await axios(options);
-        }
-        if (cv.get('cv').name.length > 1) {
-          const optionsCv = {
-            method: 'POST',
-            url: `${import.meta.env.VITE_API_URL}/users/${user.data.student_id}/cv`,
-            data: cv,
-            headers: { 'Content-Type': 'multipart/form-data' },
-          };
-          await axios(optionsCv);
-        }
+        await axios.post(`${import.meta.env.VITE_API_URL}/users/`, object3);
+
+        //   if (picture.get('picture').name.length > 1) {
+        //     const options = {
+        //       method: 'POST',
+        //       url: `${import.meta.env.VITE_API_URL}/users/${user.data.student_id}/picture`,
+        //       data: picture,
+        //       headers: { 'Content-Type': 'multipart/form-data' },
+        //     };
+        //     await axios(options);
+        //   }
+        //   if (cv.get('cv').name.length > 1) {
+        //     const optionsCv = {
+        //       method: 'POST',
+        //       url: `${import.meta.env.VITE_API_URL}/users/${user.data.student_id}/cv`,
+        //       data: cv,
+        //       headers: { 'Content-Type': 'multipart/form-data' },
+        //     };
+        //     await axios(optionsCv);
+        //   }
       };
       postData();
       setInfoModal1();
