@@ -32,11 +32,15 @@ export default function header() {
 
   useEffect(async () => {
     const token = localStorage.getItem('token');
-    const userId = jwt_decode(token).userInfo.userId;
-    if (userId) {
-      const result = await axios.get(`${import.meta.env.VITE_API_URL}/users/id/${userId}`);
-      setUsers(result.data);
-      return result;
+    console.log(token);
+    if (token) {
+      const userId = jwt_decode(token).userInfo.userId;
+      console.log(userId);
+      if (userId) {
+        const result = await axios.get(`${import.meta.env.VITE_API_URL}/users/${userId}`);
+        setUsers(result.data);
+        return result;
+      }
     }
   }, []);
 

@@ -82,13 +82,13 @@ function ModalUser(props) {
               <p>{UpperCase(props.userId.master_degree)}</p>
 
               <p className="detail">
-                <span className="school"> {props.userId.schools[0].title}</span> -{' '}
+                <span className="school"> {props.userId.schools[0].school.title}</span> -{' '}
                 <span className="year">{props.userId.schools[0].year_of_promotion}</span>
               </p>
               {props.userId.schools.length > 1 ? (
                 <>
                   <p className="detail">
-                    <span className="school"> {props.userId.schools[1].title}</span> -{' '}
+                    <span className="school"> {props.userId.schools[1].school.title}</span> -{' '}
                     <span className="year">{props.userId.schools[1].year_of_promotion}</span>
                   </p>
                 </>

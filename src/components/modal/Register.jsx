@@ -24,7 +24,7 @@ function Register(props) {
   const [invalidEmail, setInvalidEmail] = useState(false);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/users/job`).then((res) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/jobs`).then((res) => {
       setJobList(res.data);
     });
   }, []);

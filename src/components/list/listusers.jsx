@@ -53,8 +53,9 @@ export default function ListUsers(props) {
   }, []);
 
   const showModale = async (id) => {
-    const user = await axios.get(`${import.meta.env.VITE_API_URL}/users/id/${id}`);
-    setUserId(user.data[0]);
+    const user = await axios.get(`${import.meta.env.VITE_API_URL}/users/${id}`);
+    console.log(user);
+    setUserId(user.data);
     setShowModal(true);
   };
 
@@ -76,7 +77,7 @@ export default function ListUsers(props) {
         {props.waitingUser &&
           props.waitingUser.map((item, index) => {
             return (
-              <ListItem button divider alignItems="flex-start" key={index} onClick={() => showModale(item.student_id)}>
+              <ListItem button divider alignItems="flex-start" key={index} onClick={() => showModale(item.id)}>
                 <ListItemAvatar>
                   <Avatar
                     className={classes.large}
@@ -99,10 +100,10 @@ export default function ListUsers(props) {
                         {item.schools.length === 2 ? (
                           <>
                             <Typography component="span" className="school-tag" id="schoolid">
-                              {`${item.schools[0].title} ${x} ${item.schools[0].year_of_promotion}`}
+                              {`${item.schools[0].school.title} ${x} ${item.schools[0].year_of_promotion}`}
                             </Typography>
                             <Typography component="span" className="school-tag">
-                              {`${item.schools[1].title} ${x} ${item.schools[1].year_of_promotion}`}
+                              {`${item.schools[1].school.title} ${x} ${item.schools[1].year_of_promotion}`}
                             </Typography>
                           </>
                         ) : (
@@ -122,7 +123,7 @@ export default function ListUsers(props) {
           props.valueUser.map((item, index) => {
             return (
               <ListItem button divider alignItems="flex-start" key={index}>
-                <div style={{ width: '100%', height: '100%', display: 'flex' }} role="group" onClick={() => showModale(item.student_id)}>
+                <div style={{ width: '100%', height: '100%', display: 'flex' }} role="group" onClick={() => showModale(item.id)}>
                   <ListItemAvatar>
                     <Avatar
                       alt="image"
@@ -145,15 +146,15 @@ export default function ListUsers(props) {
                           {item.schools.length === 2 ? (
                             <>
                               <Typography component="span" className="school-tag" id="schoolid">
-                                {`${item.schools[0].title} ${x} ${item.schools[0].year_of_promotion}`}
+                                {`${item.schools[0].school.title} ${x} ${item.schools[0].year_of_promotion}`}
                               </Typography>
                               <Typography component="span" className="school-tag">
-                                {`${item.schools[1].title} ${x} ${item.schools[1].year_of_promotion}`}
+                                {`${item.schools[1].school.title} ${x} ${item.schools[1].year_of_promotion}`}
                               </Typography>
                             </>
                           ) : (
                             <Typography className="school-tag" component="span">
-                              {`${item.schools[0].title} ${x} ${item.schools[0].year_of_promotion}`}{' '}
+                              {`${item.schools[0].school.title} ${x} ${item.schools[0].year_of_promotion}`}{' '}
                             </Typography>
                           )}
                         </React.Fragment>
@@ -163,7 +164,7 @@ export default function ListUsers(props) {
                 </div>
                 {item.validate === 1 && admin && (
                   <div className="cancel-box">
-                    <button onClick={() => Delete(item.student_id)} id="delete-button" title="supprimer">
+                    <button onClick={() => Delete(item.id)} id="delete-button" title="supprimer">
                       X
                     </button>
                   </div>
